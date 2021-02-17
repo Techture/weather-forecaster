@@ -1,8 +1,9 @@
-## Weather Forecaster
+# Weather Forecaster
 
-# OpenWeather Code Challenge
+## OpenWeather Code Challenge
 
-What I'm using:
+### What I'm using
+
 • hooks - to manage state
 • context - to pass state through components
 • OpenWeather api - to get weather data
