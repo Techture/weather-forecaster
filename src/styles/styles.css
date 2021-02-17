@@ -1,6 +1,6 @@
 /* vars */
 :root {
-  --main-font: "Quicksand", sans-serif;
+  --main-font: "Tahoma", sans-serif;
   --main-black: #000;
   --color-1: #adadad;
   --color-2: #005791;
@@ -87,6 +87,7 @@ span {
 .header-title {
   font-weight: 300;
   color: white;
+  letter-spacing: 0.8px;
 }
 
 /* content */
