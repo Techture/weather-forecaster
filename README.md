@@ -22,6 +22,4 @@
 const apiKey = "your_API_KEY_goes_here"; module.exports = { apiKey, };
 ```
 
-- don't forget to add the secrets.js file to your .gitignore file
-
 - run npm/yarn start
