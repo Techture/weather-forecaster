@@ -62,7 +62,7 @@ const Main = () => {
 
           setWeather(d.main);
           setCity(d.name);
-          // setConditions(d.weather[0].main);
+          setConditions(d.weather[0].main);
           // setIcon(d.weather[0].icon);
 
           console.log("DATA 1 >>", d);
