@@ -32,46 +32,42 @@ const Main = () => {
   const [error, setError] = useState(null);
 
   const fetchLocation = () => {
-    try {
-      // geolocation api
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          //get the lat and long of your device
-          let pos = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          };
+    // geolocation api
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        //get the lat and long of your device
+        let pos = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        };
 
-          // setUserLocation(userLocation);
+        // setUserLocation(userLocation);
 
-          // api endpoints
-          const url = `https://api.openweathermap.org/data/2.5/weather?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial`;
+        // api endpoints
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial`;
 
-          // hourly api
-          // const url = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=London,us&mode=xml&appid=${API_KEY}`;
+        // hourly api
+        // const url = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=London,us&mode=xml&appid=${API_KEY}`;
 
-          axios.get(url).then((res) => {
-            let d = res.data;
+        axios.get(url).then((res) => {
+          let d = res.data;
 
-            // let userWeather = {
-            //   temp: d.main.temp,
-            //   temp_max: d.main.temp_max,
-            //   temp_min: d.main.temp_min,
-            //   description: d.weather[0].description,
-            //   icon: d.weather[0].icon,
-            // };
+          // let userWeather = {
+          //   temp: d.main.temp,
+          //   temp_max: d.main.temp_max,
+          //   temp_min: d.main.temp_min,
+          //   description: d.weather[0].description,
+          //   icon: d.weather[0].icon,
+          // };
 
-            setWeather(d.main);
-            // setCity(d.name);
-            setConditions(d.weather[0].main);
-            setIcon(d.weather[0].icon);
+          setWeather(d.main);
+          // setCity(d.name);
+          setConditions(d.weather[0].main);
+          setIcon(d.weather[0].icon);
 
-            console.log("DATA >>", d);
-          });
+          console.log("DATA >>", d);
         });
-      }
-    } catch (err) {
-      console.log(err);
+      });
     }
   };
 
