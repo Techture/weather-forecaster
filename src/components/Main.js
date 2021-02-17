@@ -61,11 +61,11 @@ const Main = () => {
           // };
 
           setWeather(d.main);
-          // setCity(d.name);
-          setConditions(d.weather[0].main);
-          setIcon(d.weather[0].icon);
+          setCity(d.name);
+          // setConditions(d.weather[0].main);
+          // setIcon(d.weather[0].icon);
 
-          console.log("DATA >>", d);
+          console.log("DATA 1 >>", d);
         });
       });
     }
@@ -89,6 +89,8 @@ const Main = () => {
     setCity(data.name);
     setConditions(data.weather[0].main);
     setIcon(data.weather[0].icon);
+
+    console.log("DATA 1 >>", data);
   };
 
   useEffect(() => {

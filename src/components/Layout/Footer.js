@@ -2,7 +2,15 @@ import React from "react";
 
 const Footer = () => (
   <div className="footer">
-    <p>OpenWeather code challenge</p>
+    <p>
+      <a
+        href="https://openweathermap.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        openweather.org
+      </a>
+    </p>
   </div>
 );
 

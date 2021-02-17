@@ -6,8 +6,8 @@ const Weather = ({ city, temp, temp_max, temp_min, conditions, icon }) => {
     <div className="weather-data">
       <p className="weather-tagline">
         Current forecast for <span className="weather-data-city">{city}</span>
-        <DateTime />
       </p>
+      <DateTime />
       <div className="weather-data-box">
         <span className="weather-data-property">
           <p className="weather-data-title">Temperature</p>
