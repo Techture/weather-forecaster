@@ -13,13 +13,5 @@
 ### Installation
 
 - clone repo
-- get an OpenWeather api key - https://openweathermap.org/api
 - run npm/yarn install
-- create a secrets.js file in the src folder
-- add the below snippet to the secrets.js file
-
-```html
-const apiKey = "your_API_KEY_goes_here"; module.exports = { apiKey, };
-```
-
 - run npm/yarn start

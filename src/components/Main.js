@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { apiKey } from "../secrets";
 import Header from "./Layout/Header";
 import CurrentWeatherData from "./CurrentWeatherData";
 import HourlyWeatherData from "./HourlyWeatherData";
 import Error from "./Error";
 
-const API_KEY = apiKey;
+// api key included to help make the review process simpler. this key will be deleted after the challenge is completed.
+const API_KEY = "f4d7207b99b6170b521b3903384b9293";
 
 const Main = () => {
   const [currentWeather, setCurrentWeather] = useState(null);
