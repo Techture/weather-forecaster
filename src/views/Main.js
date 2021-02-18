@@ -37,6 +37,8 @@ const Main = () => {
           setTimezone(d.timezone);
           setConditions(d.current.weather[0].main);
           setCity(d.timezone);
+
+          console.log("DATA 1 >>", d.hourly);
         });
       });
     }
@@ -94,7 +96,11 @@ const Main = () => {
         />
       )}
       {hourlyWeather !== null && (
-        <HourlyWeatherData hourlyWeather={hourlyWeather} timezone={timezone} />
+        <HourlyWeatherData
+          hourlyWeather={hourlyWeather}
+          timezone={timezone}
+          conditions={conditions}
+        />
       )}
     </div>
   );
