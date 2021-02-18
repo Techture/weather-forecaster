@@ -33,9 +33,6 @@ const Main = () => {
   const [error, setError] = useState(null);
 
   const fetchLocation = () => {
-    let weatherCurrent = {};
-    let weatherForecast = {};
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         let pos = {
@@ -43,27 +40,10 @@ const Main = () => {
           longitude: position.coords.longitude,
         };
 
-        const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial&cnt=4`;
+        const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial`;
 
         axios.get(url).then((res) => {
           let d = res.data;
-
-          weatherCurrent = {
-            timezone,
-            ...d.currently,
-          };
-
-          let timeFrames = {};
-
-          // hourlyWeather.forEach((hour) => {
-          //   const date = FormatTime(hour.dt, timezone, "hA");
-          //   if (Object.keys(timeFrames).includes(date)) {
-          //     timeFrames[date].push({ timezone, ...hour });
-          //   } else {
-          //     timeFrames[date] = [{ timezone, ...hour }];
-          //   }
-          //   console.log("HOURLY WEATHER >>", date);
-          // });
 
           setCurrentWeather(d.current);
           setHourlyWeather(d.hourly);
@@ -72,11 +52,6 @@ const Main = () => {
           setConditions(d.current.weather[0].main);
           setCity(d.timezone);
           // setIcon(d.weather[0].icon);
-
-          return {
-            weatherCurrent,
-            weatherForecast,
-          };
         });
       });
     }
