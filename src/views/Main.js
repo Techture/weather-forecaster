@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "./Layout/Header";
-import CurrentWeatherData from "./CurrentWeatherData";
-import HourlyWeatherData from "./HourlyWeatherData";
-import Error from "./Error";
+import Header from "../views/layout/Header";
+import CurrentWeatherData from "../views/CurrentWeatherData";
+import HourlyWeatherData from "../views/HourlyWeatherData";
+import Error from "../components/Error";
 
 // api key included to help make the review process simpler. this key will be deleted after the challenge is completed.
 const API_KEY = "f4d7207b99b6170b521b3903384b9293";

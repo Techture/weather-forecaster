@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
-import Context from "../Context";
+import React from "react";
 import Tagline from "./Tagline";
 
-const WeatherSearch = () => {
-  const { fetchData, city } = useContext(Context);
-
+const WeatherSearch = ({ fetchData, city }) => {
   return (
     <>
       <div className="weather-search">

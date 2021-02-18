@@ -1,5 +1,5 @@
 import React from "react";
-import DateTime from "./DateTime";
+import DateTime from "../components/DateTime";
 
 const Weather = ({ city, temp, temp_max, temp_min, conditions, icon }) => {
   return (
@@ -14,17 +14,8 @@ const Weather = ({ city, temp, temp_max, temp_min, conditions, icon }) => {
           <p className="weather-data-value">{temp}</p>
         </span>
         <span className="weather-data-property">
-          <p className="weather-data-title">Hi°</p>
-          <p className="weather-data-value">{temp_max}</p>
-        </span>
-        <span className="weather-data-property">
-          <p className="weather-data-title">Lo°</p>
-          <p className="weather-data-value">{temp_min}</p>
-        </span>
-        <span className="weather-data-property">
           <p className="weather-data-title">Conditions</p>
           <p className="weather-data-value">{conditions}</p>
-          {/* <p className="weather-data-icon">{icon}</p> */}
         </span>
       </div>
     </div>
