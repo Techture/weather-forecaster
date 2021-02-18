@@ -42,7 +42,7 @@ const Main = () => {
     }
   };
 
-  // fetch weather data based on the city the user inputs
+  // this function is passed into the WeatherSearch component and used on submission of the the form, in order for a user to fetch weather for that particular city.
   const fetchWeatherData = async (e) => {
     e.preventDefault();
 
@@ -53,6 +53,7 @@ const Main = () => {
       );
     }
 
+    // use onecall endpoint for current, hourly and daily weather info
     const url = `https://api.openweathermap.org/data/2.5/onecall?q=${location}&appid=${API_KEY}&units=imperial`;
 
     const request = axios.get(url);
