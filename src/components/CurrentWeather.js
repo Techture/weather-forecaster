@@ -16,7 +16,6 @@ const Weather = ({ city, temp, temp_max, temp_min, conditions, icon }) => {
         <span className="weather-data-property">
           <p className="weather-data-title">Conditions</p>
           <p className="weather-data-value">{conditions}</p>
-          {/* <p className="weather-data-icon">{icon}</p> */}
         </span>
       </div>
     </div>

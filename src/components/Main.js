@@ -1,38 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Context from "../Context";
 import { apiKey } from "../secrets";
 import Header from "./Layout/Header";
-import Content from "./Layout/Content";
 import CurrentWeatherData from "./CurrentWeatherData";
 import HourlyWeatherData from "./HourlyWeatherData";
 import Error from "./Error";
-// import FormatTime from "../utils/FormatTime";
 
 const API_KEY = apiKey;
 
 const Main = () => {
-  function useLocalState(localItem) {
-    const [local, setState] = useState(localStorage.getItem(localItem));
-
-    function setLocal(newItem) {
-      localStorage.setItem(localItem, newItem);
-      setState(newItem);
-    }
-
-    return [local, setLocal];
-  }
-
   const [currentWeather, setCurrentWeather] = useState(null);
   const [hourlyWeather, setHourlyWeather] = useState([]);
-  // const [dailyWeather, setDailyWeather] = useState(null);
   const [timezone, setTimezone] = useState("");
-  const [city, setCity] = useLocalState("city");
+  const [city, setCity] = useState("");
   const [conditions, setConditions] = useState(null);
   const [icon, setIcon] = useState(null);
   const [error, setError] = useState(null);
 
-  const fetchLocation = () => {
+  // get user location
+  const fetchUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         let pos = {
@@ -40,6 +26,7 @@ const Main = () => {
           longitude: position.coords.longitude,
         };
 
+        // use onecall endpoint for current, hourly and daily weather info
         const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial`;
 
         axios.get(url).then((res) => {
@@ -48,16 +35,15 @@ const Main = () => {
           setCurrentWeather(d.current);
           setHourlyWeather(d.hourly);
           setTimezone(d.timezone);
-          // setDailyWeather(d.daily);
           setConditions(d.current.weather[0].main);
           setCity(d.timezone);
-          // setIcon(d.weather[0].icon);
         });
       });
     }
   };
 
-  const fetchData = async (e) => {
+  // fetch weather data based on the city the user inputs
+  const fetchWeatherData = async (e) => {
     e.preventDefault();
 
     const location = e.target.elements.city.value;
@@ -82,31 +68,34 @@ const Main = () => {
   };
 
   useEffect(() => {
-    fetchLocation();
+    fetchUserLocation();
+    const localCityName = localStorage.getItem("city");
+    if (localCityName) {
+      setCity(JSON.parse(localCityName));
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("city", JSON.stringify(city));
+    // fetchUserLocation();
+  });
 
   return (
     <div className="main">
       <Header />
-      <Content>
-        <Context.Provider
-          value={{
-            fetchData,
-            currentWeather,
-            hourlyWeather,
-            timezone,
-            city,
-            conditions,
-            icon,
-          }}
-        >
-          {/* <WeatherSearch /> */}
-          {error !== null && <p>{<Error error={error} />}</p>}
-          {currentWeather !== null && <CurrentWeatherData />}
-          {hourlyWeather !== null && <HourlyWeatherData />}
-        </Context.Provider>
-        {/* <Footer /> */}
-      </Content>
+      {/* <WeatherSearch fetchWeatherData={fetchWeatherData}/> */}
+      {error !== null && <p>{<Error error={error} />}</p>}
+      {currentWeather !== null && (
+        <CurrentWeatherData
+          currentWeather={currentWeather}
+          city={city}
+          conditions={conditions}
+          icon={icon}
+        />
+      )}
+      {hourlyWeather !== null && (
+        <HourlyWeatherData hourlyWeather={hourlyWeather} timezone={timezone} />
+      )}
     </div>
   );
 };

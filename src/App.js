@@ -1,13 +1,8 @@
 import React from "react";
-import Wrapper from "./components/Layout/Wrapper";
 import Main from "./components/Main";
 
 const App = () => {
-  return (
-    <Wrapper>
-      <Main />
-    </Wrapper>
-  );
+  return <Main />;
 };
 
 export default App;

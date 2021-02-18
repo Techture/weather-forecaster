@@ -2,6 +2,7 @@
 :root {
   --main-font: "Tahoma", sans-serif;
   --main-black: #000;
+  --main-white: rgb(236, 236, 236);
   --color-1: #adadad;
   --color-2: #005791;
   --color-3: rgba(76, 76, 77, 0.315);
@@ -112,6 +113,7 @@ span {
 
 .weather-data {
   text-align: center;
+  background-color: var(--main-white);
 }
 
 .weather-data-city {
@@ -150,6 +152,7 @@ span {
   font-size: 2rem;
   line-height: 1;
   padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 /* weather search */
