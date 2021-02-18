@@ -90,8 +90,11 @@ const Main = () => {
     setConditions(data.weather[0].main);
     setIcon(data.weather[0].icon);
 
-    console.log("DATA 1 >>", data);
+    console.log("DATA 2 >>", data);
   };
+
+  // const useMountEffect = (fun) => useEffect(fun, []);
+  // useMountEffect(fetchLocation);
 
   useEffect(() => {
     fetchLocation();
