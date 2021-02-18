@@ -4,17 +4,14 @@ import Context from "../Context";
 import { apiKey } from "../secrets";
 import Header from "./Layout/Header";
 import Content from "./Layout/Content";
-// import WeatherSearch from "./WeatherSearch";
 import CurrentWeatherData from "./CurrentWeatherData";
 import HourlyWeatherData from "./HourlyWeatherData";
 import Error from "./Error";
 import FormatTime from "../utils/FormatTime";
-// import Footer from "./Layout/Footer";
 
 const API_KEY = apiKey;
 
 const Main = () => {
-  // custom hook for localStorage
   function useLocalState(localItem) {
     const [local, setState] = useState(localStorage.getItem(localItem));
 
@@ -58,7 +55,6 @@ const Main = () => {
 
           let timeFrames = {};
 
-          // format hourly data
           hourlyWeather.forEach((hour) => {
             const date = FormatTime(hour.dt, timezone, "hA");
             if (Object.keys(timeFrames).includes(date)) {
@@ -72,15 +68,10 @@ const Main = () => {
           setCurrentWeather(d.current);
           setHourlyWeather(d.hourly);
           setTimezone(d.timezone);
-
-          // console.log("hourly >>", d.timezone);
-
           // setDailyWeather(d.daily);
           setConditions(d.current.weather[0].main);
           setCity(d.timezone);
           // setIcon(d.weather[0].icon);
-
-          console.log("DATA 1 >>", d);
 
           return {
             weatherCurrent,
@@ -114,9 +105,6 @@ const Main = () => {
 
     console.log("DATA 2 >>", data);
   };
-
-  // const useMountEffect = (fun) => useEffect(fun, []);
-  // useMountEffect(fetchLocation);
 
   useEffect(() => {
     fetchLocation();
