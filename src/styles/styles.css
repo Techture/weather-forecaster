@@ -106,6 +106,7 @@ span {
 
 /* weather-data */
 .weather-tagline {
+  padding-top: 1rem;
   letter-spacing: 0.7px;
 }
 

@@ -4,10 +4,12 @@ import Context from "../Context";
 import { apiKey } from "../secrets";
 import Header from "./Layout/Header";
 import Content from "./Layout/Content";
-import WeatherSearch from "./WeatherSearch";
-import WeatherData from "./WeatherData";
+// import WeatherSearch from "./WeatherSearch";
+import CurrentWeatherData from "./CurrentWeatherData";
+import HourlyWeatherData from "./HourlyWeatherData";
 import Error from "./Error";
-import Footer from "./Layout/Footer";
+import FormatTime from "../utils/FormatTime";
+// import Footer from "./Layout/Footer";
 
 const API_KEY = apiKey;
 
@@ -24,48 +26,66 @@ const Main = () => {
     return [local, setLocal];
   }
 
-  // const [userLocation, setUserLocation] = useState(null);
-  const [weather, setWeather] = useState(null);
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [hourlyWeather, setHourlyWeather] = useState([]);
+  // const [dailyWeather, setDailyWeather] = useState(null);
+  const [timezone, setTimezone] = useState("");
+  const [city, setCity] = useLocalState("city");
   const [conditions, setConditions] = useState(null);
   const [icon, setIcon] = useState(null);
-  const [city, setCity] = useLocalState("city");
   const [error, setError] = useState(null);
 
   const fetchLocation = () => {
-    // geolocation api
+    let weatherCurrent = {};
+    let weatherForecast = {};
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        //get the lat and long of your device
         let pos = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         };
 
-        // setUserLocation(userLocation);
-
-        // api endpoints
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial`;
-
-        // hourly api
-        // const url = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=London,us&mode=xml&appid=${API_KEY}`;
+        const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial`;
 
         axios.get(url).then((res) => {
           let d = res.data;
 
-          // let userWeather = {
-          //   temp: d.main.temp,
-          //   temp_max: d.main.temp_max,
-          //   temp_min: d.main.temp_min,
-          //   description: d.weather[0].description,
-          //   icon: d.weather[0].icon,
-          // };
+          weatherCurrent = {
+            timezone,
+            ...d.currently,
+          };
 
-          setWeather(d.main);
-          setCity(d.name);
-          setConditions(d.weather[0].main);
+          let timeFrames = {};
+
+          // format hourly data
+          hourlyWeather.forEach((hour) => {
+            const date = FormatTime(hour.dt, timezone, "hA");
+            if (Object.keys(timeFrames).includes(date)) {
+              timeFrames[date].push({ timezone, ...hour });
+            } else {
+              timeFrames[date] = [{ timezone, ...hour }];
+            }
+            console.log("HOURLY WEATHER >>", date);
+          });
+
+          setCurrentWeather(d.current);
+          setHourlyWeather(d.hourly);
+          setTimezone(d.timezone);
+
+          // console.log("hourly >>", d.timezone);
+
+          // setDailyWeather(d.daily);
+          setConditions(d.current.weather[0].main);
+          setCity(d.timezone);
           // setIcon(d.weather[0].icon);
 
           console.log("DATA 1 >>", d);
+
+          return {
+            weatherCurrent,
+            weatherForecast,
+          };
         });
       });
     }
@@ -76,19 +96,21 @@ const Main = () => {
 
     const location = e.target.elements.city.value;
     if (!location && !city) {
-      return setError("Please enter the name of the city") + setWeather(null);
+      return (
+        setError("Please enter the name of a city") + setCurrentWeather(null)
+      );
     }
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=imperial`;
+    const url = `https://api.openweathermap.org/data/2.5/onecall?q=${location}&appid=${API_KEY}&units=imperial`;
 
     const request = axios.get(url);
     const { data } = await request;
 
     setError(null);
-    setWeather(data.main);
+    setCurrentWeather(data.current);
     setCity(data.name);
-    setConditions(data.weather[0].main);
-    setIcon(data.weather[0].icon);
+    setConditions(data.current.weather[0].main);
+    setIcon(data.current.weather[0].icon);
 
     console.log("DATA 2 >>", data);
   };
@@ -105,13 +127,22 @@ const Main = () => {
       <Header />
       <Content>
         <Context.Provider
-          value={{ fetchData, weather, city, conditions, icon }}
+          value={{
+            fetchData,
+            currentWeather,
+            hourlyWeather,
+            timezone,
+            city,
+            conditions,
+            icon,
+          }}
         >
-          <WeatherSearch />
+          {/* <WeatherSearch /> */}
           {error !== null && <p>{<Error error={error} />}</p>}
-          {weather !== null && <WeatherData />}
+          {currentWeather !== null && <CurrentWeatherData />}
+          {hourlyWeather !== null && <HourlyWeatherData />}
         </Context.Provider>
-        <Footer />
+        {/* <Footer /> */}
       </Content>
     </div>
   );
