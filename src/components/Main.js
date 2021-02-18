@@ -7,7 +7,7 @@ import Content from "./Layout/Content";
 import CurrentWeatherData from "./CurrentWeatherData";
 import HourlyWeatherData from "./HourlyWeatherData";
 import Error from "./Error";
-import FormatTime from "../utils/FormatTime";
+// import FormatTime from "../utils/FormatTime";
 
 const API_KEY = apiKey;
 
@@ -43,7 +43,7 @@ const Main = () => {
           longitude: position.coords.longitude,
         };
 
-        const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial`;
+        const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial&cnt=4`;
 
         axios.get(url).then((res) => {
           let d = res.data;
@@ -55,15 +55,15 @@ const Main = () => {
 
           let timeFrames = {};
 
-          hourlyWeather.forEach((hour) => {
-            const date = FormatTime(hour.dt, timezone, "hA");
-            if (Object.keys(timeFrames).includes(date)) {
-              timeFrames[date].push({ timezone, ...hour });
-            } else {
-              timeFrames[date] = [{ timezone, ...hour }];
-            }
-            console.log("HOURLY WEATHER >>", date);
-          });
+          // hourlyWeather.forEach((hour) => {
+          //   const date = FormatTime(hour.dt, timezone, "hA");
+          //   if (Object.keys(timeFrames).includes(date)) {
+          //     timeFrames[date].push({ timezone, ...hour });
+          //   } else {
+          //     timeFrames[date] = [{ timezone, ...hour }];
+          //   }
+          //   console.log("HOURLY WEATHER >>", date);
+          // });
 
           setCurrentWeather(d.current);
           setHourlyWeather(d.hourly);
