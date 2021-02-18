@@ -17,17 +17,19 @@ const Weather = ({ city, timezone, hourlyWeather }) => {
   return (
     <div className="weather-data">
       <p className="weather-tagline">
-        Weather for the next 48 hours{" "}
+        Hourly forecast for the next 48 hours{" "}
         <span className="weather-data-city">{timezone}</span>
       </p>
       <div className="hourly-weather-data-box">
         {hourlyWeather.map((hour, idx) => {
           return (
             <span className="weather-data-property" key={idx}>
-              <p className="weather-data-title">Date | Time | Temperature</p>
+              <p className="weather-data-title">
+                Date | Time | Temperature | Conditions
+              </p>
               <p className="weather-data-value">
                 {formattedDate(hour.dt)} - {formattedTime(hour.dt)} -{" "}
-                {roundTemp(hour.temp)}&#176;
+                {roundTemp(hour.temp)}&#176; - {hour.weather[0].main}
               </p>
             </span>
           );
