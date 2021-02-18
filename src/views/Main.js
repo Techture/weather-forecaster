@@ -78,7 +78,6 @@ const Main = () => {
 
   useEffect(() => {
     localStorage.setItem("city", JSON.stringify(city));
-    // fetchUserLocation();
   });
 
   return (
