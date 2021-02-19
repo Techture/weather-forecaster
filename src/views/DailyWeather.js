@@ -1,13 +1,11 @@
 import React from "react";
-import DateTime from "../components/DateTime";
 
 const Weather = ({ city, temp, temp_max, temp_min, conditions, icon }) => {
   return (
     <div className="weather-data">
       <p className="weather-tagline">
-        Current forecast for <span className="weather-data-city">{city}</span>
+        Daily forecast for <span className="weather-data-city">{city}</span>
       </p>
-      <DateTime />
       <div className="weather-data-box">
         <span className="weather-data-property">
           <p className="weather-data-title">Temperature</p>

@@ -4,8 +4,9 @@ import Header from "../views/layout/Header";
 import CurrentWeatherData from "../views/CurrentWeatherData";
 import HourlyWeatherData from "../views/HourlyWeatherData";
 import Error from "../components/Error";
+import Footer from "../views/layout/Footer";
 
-// api key included to help make the review process simpler. this key will be deleted after the challenge is completed.
+// api key is provided for the review, and will be deleted when review is complete
 const API_KEY = "f4d7207b99b6170b521b3903384b9293";
 
 const Main = () => {
@@ -37,14 +38,12 @@ const Main = () => {
           setTimezone(d.timezone);
           setConditions(d.current.weather[0].main);
           setCity(d.timezone);
-
-          console.log("DATA 1 >>", d.hourly);
         });
       });
     }
   };
 
-  // this function is passed into the WeatherSearch component and used on submission of the the form, in order for a user to fetch weather for that particular city.
+  // this function is passed into the WeatherSearch component and used on submission of the the form, in order for a user to fetch weather for that particular city
   const fetchWeatherData = async (e) => {
     e.preventDefault();
 
@@ -83,26 +82,29 @@ const Main = () => {
   });
 
   return (
-    <div className="main">
-      <Header />
-      {/* <WeatherSearch fetchWeatherData={fetchWeatherData}/> */}
-      {error !== null && <p>{<Error error={error} />}</p>}
-      {currentWeather !== null && (
-        <CurrentWeatherData
-          currentWeather={currentWeather}
-          city={city}
-          conditions={conditions}
-          icon={icon}
-        />
-      )}
-      {hourlyWeather !== null && (
-        <HourlyWeatherData
-          hourlyWeather={hourlyWeather}
-          timezone={timezone}
-          conditions={conditions}
-        />
-      )}
-    </div>
+    <>
+      <div className="main">
+        <Header />
+        {/* <WeatherSearch fetchWeatherData={fetchWeatherData} city={city}/> */}
+        {error !== null && <p>{<Error error={error} />}</p>}
+        {currentWeather !== null && (
+          <CurrentWeatherData
+            currentWeather={currentWeather}
+            city={city}
+            conditions={conditions}
+            icon={icon}
+          />
+        )}
+        {hourlyWeather !== null && (
+          <HourlyWeatherData
+            hourlyWeather={hourlyWeather}
+            timezone={timezone}
+            conditions={conditions}
+          />
+        )}
+      </div>
+      <Footer />
+    </>
   );
 };
 

@@ -1,0 +1,35 @@
+@import "root.css";
+
+.hourly-weather-data {
+  text-align: center;
+  background-color: var(--main-white);
+}
+
+.hourly-weather-data-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hourly-weather-tagline {
+  padding-top: 1rem;
+  letter-spacing: 0.7px;
+  padding: 1rem;
+  margin-bottom: 0;
+  color: var(--text-blue);
+  background-color: var(--color-5);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* zebra stripe the hourly data rows */
+.hourly-weather-data-property:nth-of-type(odd) {
+  background: var(--color-4);
+  padding: 1rem;
+}
+
+.hourly-weather-data-property:nth-of-type(even) {
+  background: var(--color-5);
+  padding: 1rem;
+}

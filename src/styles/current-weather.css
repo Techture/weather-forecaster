@@ -1,0 +1,14 @@
+@import "root.css";
+
+.current-weather-data {
+  text-align: center;
+  background-color: var(--color-4);
+}
+
+.current-weather-data-value {
+  color: var(--text-blue);
+  font-size: 3rem;
+  line-height: 1;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
