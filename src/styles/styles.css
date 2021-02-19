@@ -1,0 +1,14 @@
+@import "root.css";
+@import "global.css";
+@import "main.css";
+
+@import "header.css";
+@import "weather-search.css";
+@import "weather-data.css";
+
+@import "current-weather.css";
+@import "hourly-weather.css";
+@import "daily-weather.css";
+
+@import "footer.css";
+@import "media-queries.css";

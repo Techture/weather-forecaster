@@ -3,6 +3,7 @@
   border: transparent;
   background-color: var(--color-2);
   padding: 2rem 3rem;
+  border-bottom: 5px solid rgba(2, 19, 32, 0.7);
 }
 
 .header-title {

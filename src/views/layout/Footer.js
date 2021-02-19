@@ -8,7 +8,7 @@ const Footer = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        openweather.org
+        powered by openweather.org
       </a>
     </p>
   </div>
