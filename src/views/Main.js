@@ -85,7 +85,7 @@ const Main = () => {
     <>
       <div className="main">
         <Header />
-        {/* <WeatherSearch fetchWeatherData={fetchWeatherData} city={city}/> */}
+
         {error !== null && <p>{<Error error={error} />}</p>}
         {currentWeather !== null && (
           <CurrentWeatherData
