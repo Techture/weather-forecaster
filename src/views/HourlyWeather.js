@@ -20,7 +20,8 @@ const HourlyWeather = ({ timezone, hourlyWeather }) => {
   return (
     <div className="hourly-weather-data">
       <p className="hourly-weather-tagline">
-        48 Hour Forecast | <span className="weather-data-city">{timezone}</span>
+        48 Hour Forecast |{" "}
+        <span className="hourly-weather-data-city">{timezone}</span>
       </p>
       <div className="hourly-weather-data-box">
         {hourlyWeather.map((hour, idx) => {

@@ -12,7 +12,7 @@ const CurrentWeather = ({
   return (
     <div className="current-weather-data">
       <p className="weather-tagline">
-        Current forecast for <span className="weather-data-city">{city}</span>
+        Current Forecast | <span className="weather-data-city">{city}</span>
       </p>
       <DateTime />
       <div className="weather-data-box">

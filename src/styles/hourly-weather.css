@@ -18,9 +18,21 @@
   letter-spacing: 0.7px;
   padding: 1rem;
   margin-bottom: 0;
-  color: var(--text-blue);
-  background-color: var(--color-5);
+  color: var(--main-white);
+  background-color: var(--color-2);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.hourly-weather-data-city {
+  color: var(--main-white);
+}
+
+.hourly-weather-data-property {
+  display: flex;
+  width: 320px;
+  flex-basis: 0px;
+  padding: 2rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
@@ -33,4 +45,8 @@
 .hourly-weather-data-property:nth-of-type(even) {
   background: var(--color-5);
   padding: 1rem;
+}
+
+.hourly-weather-data-property:last-child {
+  border-bottom: 0px solid rgba(0, 0, 0, 0);
 }
