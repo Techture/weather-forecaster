@@ -2,20 +2,23 @@ import React from "react";
 import FormatTime from "../utils/FormatTime";
 
 const Weather = ({ city, timezone, hourlyWeather }) => {
+  // round the decimal from hourlyWeather.temp
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
   };
 
-  const formattedTime = (timeToFormat) => {
+  // format time from hourlyWeather[0].dt
+  const formatTime = (timeToFormat) => {
     return FormatTime(timeToFormat, timezone, "hA");
   };
 
-  const formattedDate = (timeToFormat) => {
+  // format date from hourlyWeather[0].dt
+  const formatDate = (timeToFormat) => {
     return FormatTime(timeToFormat, timezone, "MM/DD/YYYY");
   };
 
   return (
-    <div className="weather-data">
+    <div className="hourly-weather-data">
       <p className="weather-tagline">
         Hourly forecast for the next 48 hours{" "}
         <span className="weather-data-city">{timezone}</span>
@@ -28,7 +31,7 @@ const Weather = ({ city, timezone, hourlyWeather }) => {
                 Date | Time | Temperature | Conditions
               </p>
               <p className="weather-data-value">
-                {formattedDate(hour.dt)} - {formattedTime(hour.dt)} -{" "}
+                {formatDate(hour.dt)} - {formatTime(hour.dt)} -{" "}
                 {roundTemp(hour.temp)}&#176; - {hour.weather[0].main}
               </p>
             </span>
