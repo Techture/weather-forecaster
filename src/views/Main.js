@@ -17,7 +17,6 @@ const Main = () => {
   const [timezone, setTimezone] = useState("");
   const [city, setCity] = useState("");
   const [conditions, setConditions] = useState(null);
-  const [icon, setIcon] = useState(null);
   const [error, setError] = useState(null);
 
   // get user location
@@ -68,7 +67,6 @@ const Main = () => {
     setCurrentWeather(data.current);
     setCity(data.name);
     setConditions(data.current.weather[0].main);
-    setIcon(data.current.weather[0].icon);
 
     console.log("DATA 2 >>", data);
   };
@@ -96,7 +94,6 @@ const Main = () => {
             currentWeather={currentWeather}
             city={city}
             conditions={conditions}
-            icon={icon}
           />
         )}
 
