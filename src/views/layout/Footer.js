@@ -4,7 +4,7 @@ const Footer = () => (
   <div className="footer">
     <p>
       <a
-        href="https://openweathermap.org/"
+        href="https://openweathermap.org/api/one-call-api"
         target="_blank"
         rel="noopener noreferrer"
       >
