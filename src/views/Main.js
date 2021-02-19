@@ -54,6 +54,39 @@ const Main = () => {
     }
   };
 
+  // fetchWeatherData is passed into the WeatherSearch component and used on submission of the the form
+  const fetchWeatherData = async (e) => {
+    try {
+      e.preventDefault();
+
+      const location = e.target.elements.city.value;
+
+      if (!location && !city) {
+        return (
+          setError("Please enter the name of a city") + setCurrentWeather(null)
+        );
+      }
+
+      // use onecall endpoint for current, hourly and daily weather info
+      const url = `https://api.openweathermap.org/data/2.5/onecall?${location}&appid=${API_KEY}&units=imperial`;
+
+      const request = axios.get(url);
+      const { data } = await request;
+
+      setCurrentWeather(data.current);
+      setHourlyWeather(data.hourly);
+      setDailyWeather(data.daily);
+      setTimezone(data.timezone);
+      setConditions(data.current.weather[0].main);
+      setCity(data.name);
+      setError(null);
+
+      console.log("DATA 2 >>", data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     fetchUserLocation();
     const localCityName = localStorage.getItem("city");
