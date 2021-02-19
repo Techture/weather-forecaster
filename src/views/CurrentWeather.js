@@ -1,14 +1,7 @@
 import React from "react";
 import DateTime from "../components/DateTime";
 
-const CurrentWeather = ({
-  city,
-  temp,
-  temp_max,
-  temp_min,
-  conditions,
-  icon,
-}) => {
+const CurrentWeather = ({ city, temp, temp_max, temp_min, conditions }) => {
   return (
     <div className="current-weather-data">
       <p className="weather-tagline">
