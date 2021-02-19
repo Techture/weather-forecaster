@@ -4,7 +4,6 @@ import Header from "../views/layout/Header";
 import CurrentWeatherData from "../views/CurrentWeatherData";
 import HourlyWeatherData from "../views/HourlyWeatherData";
 import DailyWeatherData from "../views/DailyWeatherData";
-import WeatherSearch from "../components/WeatherSearch";
 import Error from "../components/Error";
 import Footer from "../views/layout/Footer";
 
