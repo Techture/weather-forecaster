@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "../views/layout/Header";
 import CurrentWeatherData from "../views/CurrentWeatherData";
 import HourlyWeatherData from "../views/HourlyWeatherData";
+import DailyWeatherData from "../views/DailyWeatherData";
 import Error from "../components/Error";
 import Footer from "../views/layout/Footer";
 
@@ -12,6 +13,7 @@ const API_KEY = "f4d7207b99b6170b521b3903384b9293";
 const Main = () => {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [hourlyWeather, setHourlyWeather] = useState([]);
+  const [dailyWeather, setDailyWeather] = useState([]);
   const [timezone, setTimezone] = useState("");
   const [city, setCity] = useState("");
   const [conditions, setConditions] = useState(null);
@@ -32,9 +34,11 @@ const Main = () => {
 
         axios.get(url).then((res) => {
           let d = res.data;
+          console.log("D >> ", d);
 
           setCurrentWeather(d.current);
           setHourlyWeather(d.hourly);
+          setDailyWeather(d.daily);
           setTimezone(d.timezone);
           setConditions(d.current.weather[0].main);
           setCity(d.timezone);
@@ -95,6 +99,15 @@ const Main = () => {
             icon={icon}
           />
         )}
+
+        {dailyWeather !== null && (
+          <DailyWeatherData
+            dailyWeather={dailyWeather}
+            timezone={timezone}
+            conditions={conditions}
+          />
+        )}
+
         {hourlyWeather !== null && (
           <HourlyWeatherData
             hourlyWeather={hourlyWeather}

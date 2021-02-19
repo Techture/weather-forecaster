@@ -1,0 +1,52 @@
+@import "root.css";
+
+.daily-weather-data {
+  text-align: center;
+  background-color: var(--main-white);
+  margin-bottom: 30px;
+}
+
+.daily-weather-data-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.daily-weather-tagline {
+  padding-top: 1rem;
+  letter-spacing: 0.7px;
+  padding: 1rem;
+  margin-bottom: 0;
+  color: var(--text-blue);
+  background-color: var(--color-5);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.daily-weather-data-property {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* justify-items: center; */
+  align-items: stretch;
+}
+
+/* zebra stripe the daily data rows */
+.daily-weather-data-property:nth-of-type(odd) {
+  background: var(--color-4);
+  padding: 1rem;
+}
+
+.daily-weather-data-property:nth-of-type(even) {
+  background: whitesmoke;
+  padding: 1rem;
+}
+
+.daily-weather-data-value {
+  color: var(--color-2);
+  font-size: 1.8rem;
+  line-height: 1;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}

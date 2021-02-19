@@ -1,7 +1,7 @@
 import React from "react";
 import FormatTime from "../utils/FormatTime";
 
-const Weather = ({ city, timezone, hourlyWeather }) => {
+const HourlyWeather = ({ timezone, hourlyWeather }) => {
   // round the decimal from hourlyWeather.temp
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
@@ -41,4 +41,4 @@ const Weather = ({ city, timezone, hourlyWeather }) => {
   );
 };
 
-export default Weather;
+export default HourlyWeather;

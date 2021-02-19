@@ -1,7 +1,14 @@
 import React from "react";
 import DateTime from "../components/DateTime";
 
-const Weather = ({ city, temp, temp_max, temp_min, conditions, icon }) => {
+const CurrentWeather = ({
+  city,
+  temp,
+  temp_max,
+  temp_min,
+  conditions,
+  icon,
+}) => {
   return (
     <div className="current-weather-data">
       <p className="weather-tagline">
@@ -22,4 +29,4 @@ const Weather = ({ city, temp, temp_max, temp_min, conditions, icon }) => {
   );
 };
 
-export default Weather;
+export default CurrentWeather;

@@ -1,32 +1,43 @@
 import React from "react";
+import FormatTime from "../utils/FormatTime";
 
-const Weather = ({ city, temp, temp_max, temp_min, conditions, icon }) => {
+const DailyWeather = ({ timezone, dailyWeather }) => {
+  // round the decimal from dailyWeather.temp
+  const roundTemp = (tempToRound) => {
+    return Math.round(tempToRound);
+  };
+
+  // format time from hourlyWeather[0].dt
+  const formatTime = (timeToFormat) => {
+    return FormatTime(timeToFormat, timezone, "hA");
+  };
+
+  // format date from hourlyWeather[0].dt
+  const formatDate = (dateToFormat) => {
+    return FormatTime(dateToFormat, timezone, "MM/DD/YYYY");
+  };
   return (
     <div className="weather-data">
-      <p className="weather-tagline">
-        Daily forecast for <span className="weather-data-city">{city}</span>
+      <p className="daily-weather-tagline">
+        8 Day forecast | <span className="weather-data-city">{timezone}</span>
       </p>
-      <div className="weather-data-box">
-        <span className="weather-data-property">
-          <p className="weather-data-title">Temperature</p>
-          <p className="weather-data-value">{temp}</p>
-        </span>
-        <span className="weather-data-property">
-          <p className="weather-data-title">Hi°</p>
-          <p className="weather-data-value">{temp_max}</p>
-        </span>
-        <span className="weather-data-property">
-          <p className="weather-data-title">Lo°</p>
-          <p className="weather-data-value">{temp_min}</p>
-        </span>
-        <span className="weather-data-property">
-          <p className="weather-data-title">Conditions</p>
-          <p className="weather-data-value">{conditions}</p>
-          {/* <p className="weather-data-icon">{icon}</p> */}
-        </span>
+      <div className="daily-weather-data-box">
+        {dailyWeather.map((day, idx) => {
+          return (
+            <span className="daily-weather-data-property" key={idx}>
+              <p className="weather-data-title">
+                Date | Time | Temperature | Conditions
+              </p>
+              <p className="daily-weather-data-value">
+                {formatDate(day.dt)} - {formatTime(day.dt)} -{" "}
+                {roundTemp(day.temp.day)}&#176; - {day.weather[0].main}
+              </p>
+            </span>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-export default Weather;
+export default DailyWeather;
