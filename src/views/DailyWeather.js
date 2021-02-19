@@ -19,7 +19,8 @@ const DailyWeather = ({ timezone, dailyWeather }) => {
   return (
     <div className="weather-data">
       <p className="daily-weather-tagline">
-        8 Day forecast | <span className="weather-data-city">{timezone}</span>
+        8 Day Forecast |{" "}
+        <span className="daily-weather-data-city">{timezone}</span>
       </p>
       <div className="daily-weather-data-box">
         {dailyWeather.map((day, idx) => {

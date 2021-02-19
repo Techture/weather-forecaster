@@ -18,18 +18,22 @@
   letter-spacing: 0.7px;
   padding: 1rem;
   margin-bottom: 0;
-  color: var(--text-blue);
-  background-color: var(--color-5);
+  color: var(--main-white);
+  background-color: var(--color-2);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+.daily-weather-data-city {
+  color: var(--main-white);
+}
+
 .daily-weather-data-property {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  /* justify-items: center; */
-  align-items: stretch;
+  width: 320px;
+  flex-basis: 0px;
+  padding: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 /* zebra stripe the daily data rows */
@@ -39,8 +43,12 @@
 }
 
 .daily-weather-data-property:nth-of-type(even) {
-  background: whitesmoke;
+  background: var(--color-5);
   padding: 1rem;
+}
+
+.daily-weather-data-property:last-child {
+  border-bottom: 0px solid rgba(0, 0, 0, 0);
 }
 
 .daily-weather-data-value {
