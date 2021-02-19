@@ -1,5 +1,6 @@
 import React from "react";
 import FormatTime from "../utils/FormatTime";
+import Accordion from "../components/Accordion";
 
 const HourlyWeather = ({ timezone, hourlyWeather }) => {
   // round the decimal from hourlyWeather.temp
@@ -23,21 +24,24 @@ const HourlyWeather = ({ timezone, hourlyWeather }) => {
         48 Hour Forecast |{" "}
         <span className="hourly-weather-data-city">{timezone}</span>
       </p>
-      <div className="hourly-weather-data-box">
-        {hourlyWeather.map((hour, idx) => {
-          return (
-            <span className="hourly-weather-data-property" key={idx}>
-              <p className="weather-data-title">
-                Date | Time | Temperature | Conditions
-              </p>
-              <p className="weather-data-value">
-                {formatDate(hour.dt)} - {formatTime(hour.dt)} -{" "}
-                {roundTemp(hour.temp)}&#176; - {hour.weather[0].main}
-              </p>
-            </span>
-          );
-        })}
-      </div>
+
+      <Accordion title={"Click to view >>"}>
+        <div className="hourly-weather-data-box">
+          {hourlyWeather.map((hour, idx) => {
+            return (
+              <span className="hourly-weather-data-property" key={idx}>
+                <p className="weather-data-title">
+                  Date | Time | Temperature | Conditions
+                </p>
+                <p className="weather-data-value">
+                  {formatDate(hour.dt)} - {formatTime(hour.dt)} -{" "}
+                  {roundTemp(hour.temp)}&#176; - {hour.weather[0].main}
+                </p>
+              </span>
+            );
+          })}
+        </div>
+      </Accordion>
     </div>
   );
 };

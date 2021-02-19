@@ -10,5 +10,6 @@
 @import "hourly-weather.css";
 @import "daily-weather.css";
 
+@import "accordion.css";
 @import "footer.css";
 @import "media-queries.css";
