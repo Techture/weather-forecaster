@@ -8815,11 +8815,6 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-react-responsive-accordion@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-responsive-accordion/-/react-responsive-accordion-1.0.0.tgz#e2c39ee13e18daa40d9d78486beccd27f4988cba"
-  integrity sha1-4sOe4T4Y2qQNnXhIa+zNJ/SYjLo=
-
 react-scripts@3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-3.4.1.tgz#f551298b5c71985cc491b9acf3c8e8c0ae3ada0a"

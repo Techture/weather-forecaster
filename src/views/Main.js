@@ -33,7 +33,6 @@ const Main = () => {
 
         axios.get(url).then((res) => {
           let d = res.data;
-          console.log("D >> ", d);
 
           setCurrentWeather(d.current);
           setHourlyWeather(d.hourly);
