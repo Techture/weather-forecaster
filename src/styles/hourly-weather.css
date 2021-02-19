@@ -3,6 +3,7 @@
 .hourly-weather-data {
   text-align: center;
   background-color: var(--main-white);
+  margin-bottom: 30px;
 }
 
 .hourly-weather-data-box {
