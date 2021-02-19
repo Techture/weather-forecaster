@@ -2,7 +2,7 @@ import React from "react";
 import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
 
-const HourlyWeather = ({ timezone, hourlyWeather }) => {
+const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
   // round the decimal from hourlyWeather.temp
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
@@ -21,8 +21,8 @@ const HourlyWeather = ({ timezone, hourlyWeather }) => {
   return (
     <div className="hourly-weather-data">
       <p className="hourly-weather-tagline">
-        48 Hour Forecast |{" "}
-        <span className="hourly-weather-data-city">{timezone}</span>
+        48 Hour Forecast |
+        <span className="hourly-weather-data-city"> {city}</span>
       </p>
 
       <Accordion title={"Click to view >>"}>
