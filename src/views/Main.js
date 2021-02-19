@@ -43,7 +43,7 @@ const Main = () => {
     }
   };
 
-  // this function is passed into the WeatherSearch component and used on submission of the the form, in order for a user to fetch weather for that particular city
+  // fetchWeatherData is passed into the WeatherSearch component and used on submission of the the form
   const fetchWeatherData = async (e) => {
     e.preventDefault();
 
