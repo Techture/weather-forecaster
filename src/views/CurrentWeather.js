@@ -4,8 +4,9 @@ import DateTime from "../components/DateTime";
 const CurrentWeather = ({ city, temp, temp_max, temp_min, conditions }) => {
   return (
     <div className="current-weather-data">
-      <p className="weather-tagline">
-        Current Forecast | <span className="weather-data-city">{city}</span>
+      <p className="current-weather-tagline">
+        Current Forecast |{" "}
+        <span className="current-weather-data-city">{city}</span>
       </p>
       <DateTime />
       <div className="weather-data-box">
