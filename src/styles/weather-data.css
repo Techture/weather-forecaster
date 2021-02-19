@@ -13,13 +13,6 @@
   justify-content: center;
 }
 
-.weather-tagline {
-  padding-top: 1rem;
-  letter-spacing: 0.7px;
-  padding: 0.4rem;
-  background-color: var(--color-4);
-}
-
 .weather-data {
   text-align: center;
   background-color: var(--main-white);
