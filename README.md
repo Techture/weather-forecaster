@@ -5,9 +5,9 @@
 ### What I'm using
 
 - hooks - to manage state
-- OpenWeather api - api key is provided to make review process more streamlined. will delete key after review.
-- geolocation api - to get user location
-- localStorage - to persist data on browser refresh
+- OpenWeather api - api key is provided for the review, and will be deleted when review is complete.
+- geolocation api - to get user location and display their weather data
+- localStorage - to persist weather data on browser refresh
 
 ### Installation
 
