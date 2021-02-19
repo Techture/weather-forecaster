@@ -13,8 +13,8 @@ const Weather = ({ city, timezone, hourlyWeather }) => {
   };
 
   // format date from hourlyWeather[0].dt
-  const formatDate = (timeToFormat) => {
-    return FormatTime(timeToFormat, timezone, "MM/DD/YYYY");
+  const formatDate = (dateToFormat) => {
+    return FormatTime(dateToFormat, timezone, "MM/DD/YYYY");
   };
 
   return (
