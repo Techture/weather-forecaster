@@ -91,6 +91,7 @@ const Main = () => {
       //   name: "",
       // };
 
+      // TODO >> need to make the value/type of cityIndex and location the same
       for (const cityIndex of cities) {
         if (cityIndex.name === location) {
           let newLocation = {
