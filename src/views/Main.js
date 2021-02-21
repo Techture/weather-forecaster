@@ -24,7 +24,7 @@ const Main = () => {
   const [hourlyWeather, setHourlyWeather] = useState(null);
   const [dailyWeather, setDailyWeather] = useState(null);
   const [timezone, setTimezone] = useState(null);
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState("");
   const [conditions, setConditions] = useState(null);
   const [error, setError] = useState(null);
 
@@ -44,6 +44,7 @@ const Main = () => {
           // use onecall endpoint for current, hourly and daily weather info
           const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${fetchedPostion.latitude}&lon=${fetchedPostion.longitude}&appid=${API_KEY}&units=imperial`;
 
+          // make this an await call like the fetchWeatherData function
           axios.get(url).then((res) => {
             let d = res.data;
 
@@ -55,13 +56,13 @@ const Main = () => {
               .split("_")
               .join(" ");
 
+            setTimezone(d.timezone);
             setCurrentWeather(d.current);
             setHourlyWeather(d.hourly);
             setDailyWeather(d.daily);
-            setTimezone(d.timezone);
             setCity(cityFormatter);
             setConditions(d.current.weather[0].main);
-            setError(null);
+            setError("");
           });
         });
       }
@@ -76,7 +77,7 @@ const Main = () => {
       e.preventDefault();
 
       const location = e.target.elements.city.value;
-      console.log("location >>", location);
+      // console.log("location >>", location);
 
       if (!location && !city) {
         return (
@@ -84,52 +85,48 @@ const Main = () => {
         );
       }
 
-      // loop through cities list and if the location matches the city, update the lat/long
-      // let newLocation = {
-      //   latitude: userLocation.latitude,
-      //   longitude: userLocation.latitude,
-      //   name: "",
-      // };
+      // helper to match the city names
+      const cleanCityName = (cityName) => {
+        return cityName.toLowerCase();
+      };
 
-      // TODO >> need to make the value/type of cityIndex and location the same
       for (const cityIndex of cities) {
-        if (cityIndex.name === location) {
-          let newLocation = {
+        if (cleanCityName(cityIndex.name) === cleanCityName(location)) {
+          setUserLocation({
             latitude: cityIndex.lat,
             longitude: cityIndex.lng,
             name: cityIndex.name,
-          };
-          setUserLocation({ userLocation: newLocation });
-          console.log("name: ", userLocation.name);
+          });
+          setCity(cityIndex.name);
         }
       }
 
       // TODO
       // create a function that takes the location value from the search form, and filters out the matching city name, updating the lat/long props of that city, which will be passed as the two existing lat/lng properties into the url, pulling that city's data into the UI.
 
-      // let filteredCity = cities.filter((c)  {
-      //   if (cityToGet === c) {
-      //     return cityToGet.name;
-      //   }
-      //   return console.log(filteredCity);
-      // });
-
-      // use onecall endpoint for current, hourly and daily weather info
       const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${API_KEY}&units=imperial`;
 
-      // console.log("userLocation >>", userLocation);
-      // console.log("URL >>", url);
+      console.log("URL >>", url);
 
       const request = axios.get(url);
       const { data } = await request;
+      console.log("DATA 2 >>", data);
+
+      // format the value of timezone to get just the city
+      let cityFormatter2 = data.timezone
+        .split("/")
+        .slice(1, 2)
+        .join(" ")
+        .split("_")
+        .join(" ");
 
       setTimezone(data.timezone);
-      setCity(data.name);
+      setCity(cityFormatter2);
       setCurrentWeather(data.current);
-      setConditions(data.current.weather[0].main);
       setHourlyWeather(data.hourly);
       setDailyWeather(data.daily);
-      setError(null);
+      setConditions(data.current.weather[0].main);
+      setError("");
     } catch (err) {
       console.log(`Fetch Data ${err}`);
     }
