@@ -85,6 +85,12 @@ const Main = () => {
       }
 
       // loop through cities list and if the location matches the city, update the lat/long
+      // let newLocation = {
+      //   latitude: userLocation.latitude,
+      //   longitude: userLocation.latitude,
+      //   name: "",
+      // };
+
       for (const cityIndex of cities) {
         if (cityIndex.name === location) {
           let newLocation = {
@@ -92,7 +98,8 @@ const Main = () => {
             longitude: cityIndex.lng,
             name: cityIndex.name,
           };
-          return setUserLocation({ userLocation: newLocation });
+          setUserLocation({ userLocation: newLocation });
+          console.log("name: ", userLocation.name);
         }
       }
 
@@ -115,12 +122,12 @@ const Main = () => {
       const request = axios.get(url);
       const { data } = await request;
 
+      setTimezone(data.timezone);
+      setCity(data.name);
       setCurrentWeather(data.current);
+      setConditions(data.current.weather[0].main);
       setHourlyWeather(data.hourly);
       setDailyWeather(data.daily);
-      setTimezone(data.timezone);
-      setConditions(data.current.weather[0].main);
-      setCity(data.name);
       setError(null);
     } catch (err) {
       console.log(`Fetch Data ${err}`);
