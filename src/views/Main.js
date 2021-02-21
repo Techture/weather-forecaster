@@ -90,16 +90,20 @@ const Main = () => {
         return cityName.toLowerCase();
       };
 
-      for (const cityIndex of cities) {
-        if (cleanCityName(cityIndex.name) === cleanCityName(location)) {
-          setUserLocation({
-            latitude: cityIndex.lat,
-            longitude: cityIndex.lng,
-            name: cityIndex.name,
-          });
-          setCity(cityIndex.name);
+      const updateUserLocation = () => {
+        for (const cityIndex of cities) {
+          if (cleanCityName(cityIndex.name) === cleanCityName(location)) {
+            setUserLocation({
+              latitude: cityIndex.lat,
+              longitude: cityIndex.lng,
+              name: cityIndex.name,
+            });
+            setCity(cityIndex.name);
+          }
         }
-      }
+      };
+
+      updateUserLocation();
 
       const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${API_KEY}&units=imperial`;
 
