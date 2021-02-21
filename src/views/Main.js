@@ -101,9 +101,6 @@ const Main = () => {
         }
       }
 
-      // TODO
-      // create a function that takes the location value from the search form, and filters out the matching city name, updating the lat/long props of that city, which will be passed as the two existing lat/lng properties into the url, pulling that city's data into the UI.
-
       const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${API_KEY}&units=imperial`;
 
       console.log("URL >>", url);
