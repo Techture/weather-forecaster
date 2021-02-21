@@ -8,7 +8,7 @@ import DailyWeatherData from "../views/DailyWeatherData";
 import Error from "../components/Error";
 import Footer from "../views/layout/Footer";
 
-// list of cities
+// list of cities to pull lat/lng from
 import cities from "cities.json";
 
 // api key is provided for the review, and will be deleted when review is complete
@@ -36,6 +36,7 @@ const Main = () => {
           let fetchedPostion = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
+            name: "",
           };
 
           setUserLocation({ userLocation: fetchedPostion });
@@ -65,7 +66,7 @@ const Main = () => {
         });
       }
     } catch (err) {
-      console.log(err);
+      console.log("Fetch User Location Error >>", err);
     }
   };
 
@@ -74,9 +75,8 @@ const Main = () => {
     try {
       e.preventDefault();
 
-      let location = e.target.elements.city.value;
-      // console.log("location >>", location);
-      // console.log("cities >>", cities);
+      const location = e.target.elements.city.value;
+      console.log("location >>", location);
 
       if (!location && !city) {
         return (
@@ -84,35 +84,30 @@ const Main = () => {
         );
       }
 
-      // for (const cityScan of cities) {
-      //   return console.log(
-      //     `city: ${cityScan.name} lat: ${cityScan.lat} long: ${cityScan.lng}`
-      //   );
+      // loop through cities list and if the location matches the city, update the lat/long
+      for (const cityIndex of cities) {
+        if (cityIndex.name === location) {
+          let newLocation = {
+            latitude: cityIndex.lat,
+            longitude: cityIndex.lng,
+            name: cityIndex.name,
+          };
+          return setUserLocation({ userLocation: newLocation });
+        }
+      }
 
       // TODO
-      // create a function that takes the name of the city a user types in, and filters out the matching city name, updating the lat/long props of that city, which will be passed as two existing properties into the url, pulling that city's data into the UI.
+      // create a function that takes the location value we receive from the search form, and filters out the matching city name, updating the lat/long props of that city, which will be passed as the two existing lat/lng properties into the url, pulling that city's data into the UI.
 
-      // const getCity = (cityToGet) => {
-      //   const filteredCity = cities.filter((c) => {
-      //     if (cityToGet === c) {
-      //       return cityToGet.name;
-      //     }
-      //     return console.log(filteredCity);
-      //   });
-      // };
-
-      // getCity(location);
-      // console.log("location >>", location);
-
-      let newLocation = {
-        name: cities[0].name,
-        latitude: cities[0].lat,
-        longitude: cities[0].lng,
-      };
-      setUserLocation({ userLocation: newLocation });
+      // let filteredCity = cities.filter((c)  {
+      //   if (cityToGet === c) {
+      //     return cityToGet.name;
+      //   }
+      //   return console.log(filteredCity);
+      // });
 
       // use onecall endpoint for current, hourly and daily weather info
-      const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${newLocation.latitude}&lon=${newLocation.longitude}&appid=${API_KEY}&units=imperial`;
+      const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${API_KEY}&units=imperial`;
 
       // console.log("userLocation >>", userLocation);
       // console.log("URL >>", url);
@@ -125,10 +120,10 @@ const Main = () => {
       setDailyWeather(data.daily);
       setTimezone(data.timezone);
       setConditions(data.current.weather[0].main);
-      setCity(newLocation.name);
+      setCity(data.name);
       setError(null);
     } catch (err) {
-      console.log("fetchWeatherData error >>", err);
+      console.log(`Fetch Data ${err}`);
     }
   };
 

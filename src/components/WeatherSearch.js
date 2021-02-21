@@ -1,5 +1,6 @@
 import React from "react";
 import Tagline from "./Tagline";
+import { FaArrowRight } from "react-icons/fa";
 
 const WeatherSearch = ({ fetchWeatherData, city }) => {
   return (
@@ -15,7 +16,9 @@ const WeatherSearch = ({ fetchWeatherData, city }) => {
             placeholder={city}
           />
           <div className="weather-search-submit">
-            <button className="weather-search-button">&#10140;</button>
+            <button className="weather-search-button">
+              <FaArrowRight />{" "}
+            </button>
           </div>
         </form>
       </div>
