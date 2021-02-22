@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../views/layout/Header";
 import { API_KEY, API_BASE_URL } from "../apis/config";
 import UseFetch from "../hooks/UseFetch";
 import CitySelector from "../components/CitySelector";
 import DailyWeatherList from "./DailyWeatherList";
+import HourlyWeatherList from "./HourlyWeatherList";
+import CurrentWeatherView from "./CurrentWeatherView";
 import Footer from "../views/layout/Footer";
 
 // list of cities to pull lat/lng from
@@ -13,43 +15,57 @@ const Main = () => {
   const { data, error, isLoading, setUrl } = UseFetch();
   console.log("MAIN DATA >>", data);
 
-  const getDailyWeather = () => {
-    if (error) return <h2>Error when fetching: {error}</h2>;
-    if (!data && isLoading) return <h2>LOADING...</h2>;
+  const getCurrentWeather = () => {
+    if (error) return <h2>Sorry, {error}.</h2>;
+    if (!data && isLoading) return <h2>Loading...</h2>;
     if (!data) return null;
-    return <DailyWeatherList dailyWeather={data.list} city={data.city.name} />;
+    return (
+      <>
+        <CurrentWeatherView
+          currentWeather={data.current}
+          city={data.timezone}
+        />
+        <DailyWeatherList dailyWeather={data.daily} city={data.timezone} />
+        <HourlyWeatherList hourlyWeather={data.hourly} city={data.timezone} />
+      </>
+    );
   };
+
+  // const getDailyWeather = () => {
+  //   if (error) return <h2>Sorry, {error}.</h2>;
+  //   if (!data && isLoading) return <h2>Loading...</h2>;
+  //   if (!data) return null;
+  //   return <DailyWeatherList dailyWeather={data.daily} city={data.city.name} />;
+  // };
+
+  // const getHourlyWeather = () => {
+  //   if (error) return <h2>Sorry, {error}.</h2>;
+  //   if (!data && isLoading) return <h2>Loading...</h2>;
+  //   if (!data) return null;
+  //   return (
+  //     <HourlyWeatherList hourlyWeather={data.list} city={data.city.name} />
+  //   );
+  // };
+
+  // TODO convert city into lat/lng properties to use in the setUrl function
 
   return (
     <>
       <div className="main">
         <Header />
         <CitySelector
-          onSearch={(city) =>
-            setUrl(
-              `${API_BASE_URL}/data/2.5/forecast?q=${city}&cnt=5&appid=${API_KEY}&units=imperial`
-            )
+          onSearch={
+            (city) =>
+              setUrl(
+                `${API_BASE_URL}/data/2.5/onecall?lat=${40.6501}&lon=${-73.94958}&appid=${API_KEY}&units=imperial`
+              )
+            // setUrl(
+            //   `${API_BASE_URL}/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`
+            // )
           }
         />
-        {/* {error !== null && <p>{<Error error={error} />}</p>} */}
-        {/* {currentWeather !== null && (
-          <CurrentWeatherData
-            currentWeather={currentWeather}
-            conditions={conditions}
-            // city={city}
-          />
-        )} */}
-
-        {/* grab daily weather */}
-        {getDailyWeather()}
-
-        {/* {hourlyWeather !== null && (
-          <HourlyWeatherData
-            hourlyWeather={hourlyWeather}
-            timezone={timezone}
-            // city={city}
-          />
-        )}  */}
+        {/* grab current weather */}
+        {getCurrentWeather()}
       </div>
       <Footer />
     </>

@@ -19,9 +19,9 @@
   padding: 1rem 0rem;
   border-radius: 5px;
   margin-right: 2rem;
-  padding-left: 1rem;
+  /* padding-left: 1rem;
   padding-right: 3rem;
-  margin-left: -1rem;
+  margin-left: -1rem; */
 }
 
 .weather-search-input:focus {
@@ -37,7 +37,7 @@
   height: 30px;
   width: 10px;
   position: relative;
-  top: 0.9rem;
+  top: -8px;
   margin-left: -4rem;
 }
 

@@ -22,8 +22,8 @@
 
 //     const updateUserLocation = () => {
 //       for (const cityIndex of cities) {
-//         if (cleanCityName(cityIndex.name) === cleanCityName(location)) {
-//           setUserLocation({
+//         if (cleanCityName(cityIndex.name) === cleanCityName(city)) {
+//           setCityLocation({
 //             latitude: cityIndex.lat,
 //             longitude: cityIndex.lng,
 //             name: cityIndex.name,
@@ -34,6 +34,8 @@
 //     };
 
 //     updateUserLocation();
+
+// setCityLocation({ cityLocation: fetchedPostion });
 
 //     const url = `${API_BASE_URL}/data/2.5/onecall?/data/2.5/onecall?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${API_KEY}&units=imperial`;
 

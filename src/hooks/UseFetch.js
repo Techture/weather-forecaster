@@ -24,7 +24,6 @@ const UseFetch = (initialUrl) => {
           return;
         }
         setData(data);
-        console.log("USE FETCH >> ", data);
       })
       .catch((error) => {
         setIsLoading(false);

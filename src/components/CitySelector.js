@@ -6,7 +6,7 @@ import { FormControl, Button } from "react-bootstrap";
 const CitySelector = ({ onSearch }) => {
   const [city, setCity] = useState("");
 
-  // setup localStorage to persist user data
+  // set city in localStorage
   useEffect(() => {
     const localCityName = localStorage.getItem("city");
     if (localCityName) {

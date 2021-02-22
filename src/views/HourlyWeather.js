@@ -25,7 +25,7 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
         <span className="hourly-weather-data-city"> {city}</span>
       </p>
 
-      <Accordion title={"Click to view >>"}>
+      <Accordion title={"Click To View >>"} isExpand={true}>
         <div className="hourly-weather-data-box">
           {hourlyWeather.map((hour, idx) => {
             return (
@@ -34,8 +34,8 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
                   Date | Time | Temperature | Conditions
                 </p>
                 <p className="weather-data-value">
-                  {formatDate(hour.dt)} - {formatTime(hour.dt)} -{" "}
-                  {roundTemp(hour.temp)}&#176; - {hour.weather[0].main}
+                  {formatDate(hour.dt)} {formatTime(hour.dt)}{" "}
+                  {roundTemp(hour.temp.day)}&#176; {hour.weather[0].main}
                 </p>
               </span>
             );

@@ -3,7 +3,7 @@
 .daily-weather-data {
   text-align: center;
   background-color: var(--main-white);
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .daily-weather-data-box {

@@ -1,7 +1,7 @@
 import React from "react";
 import HourlyWeather from "./HourlyWeather";
 
-const HourlyWeatherData = ({ hourlyWeather, timezone, city }) => {
+const HourlyWeatherList = ({ hourlyWeather, timezone, city }) => {
   return (
     <HourlyWeather
       hourlyWeather={hourlyWeather}
@@ -11,4 +11,4 @@ const HourlyWeatherData = ({ hourlyWeather, timezone, city }) => {
   );
 };
 
-export default HourlyWeatherData;
+export default HourlyWeatherList;
