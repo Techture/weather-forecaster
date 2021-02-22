@@ -27,7 +27,8 @@ const Main = () => {
     );
   };
 
-  // this effect loads some placeholder data
+  // this effect loads some placeholder data for testing
+  // TODO use geolocation to load data from users lat/lng
   // useEffect(() => {
   //   setUrl(
   //     `${API_BASE_URL}/data/2.5/onecall?lat=${40.6501}&lon=${-73.94958}&appid=${API_KEY}&units=imperial`

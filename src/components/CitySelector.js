@@ -15,21 +15,20 @@ const CitySelector = ({ onSearch }) => {
   });
 
   // helper to match the city names
-  const cleanCityName = (cityName) => {
-    return cityName.toLowerCase();
-  };
+  // const cleanCityName = (cityName) => {
+  //   return cityName.toLowerCase();
+  // };
 
   const updateUserLocation = (cityName) => {
     for (const cityIndex of cities) {
-      if (cleanCityName(cityIndex.name) === cleanCityName(cityName)) {
+      if (cityIndex.name === cityName) {
         let newUserLocation = {
-          latitude: cityIndex.lat,
-          longitude: cityIndex.lng,
-          name: cityIndex.name,
+          latitude: cityName.lat,
+          longitude: cityName.lng,
+          name: cityName,
         };
         setUserLocation({ userLocation: newUserLocation });
-
-        console.log("new user location after update >> ", newUserLocation);
+        console.log("new user location on load >> ", userLocation);
       }
     }
   };
