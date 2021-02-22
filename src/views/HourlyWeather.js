@@ -27,7 +27,7 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
         <span className="hourly-weather-data-city"> {city}</span>
       </p>
 
-      <Accordion title={"Click To View >>"} isExpand={true}>
+      <Accordion title={"Click To View >>"} isExpand={false}>
         <div className="hourly-weather-data-box">
           {hourlyWeather.map((hour, idx) => {
             return (

@@ -1,7 +1,7 @@
 import React from "react";
 import DateTime from "../components/DateTime";
 
-const CurrentWeather = ({ city, temp, temp_max, temp_min, conditions }) => {
+const CurrentWeather = ({ city, temp, feels_like, conditions, icon }) => {
   return (
     <div className="current-weather-data">
       <p className="current-weather-tagline">
@@ -15,9 +15,15 @@ const CurrentWeather = ({ city, temp, temp_max, temp_min, conditions }) => {
           <p className="current-weather-data-value">{temp}&#176;</p>
         </span>
         <span className="weather-data-property">
+          <p className="weather-data-title">Feels Like</p>
+          <p className="current-weather-data-value">{feels_like}&#176;</p>
+        </span>
+        <span className="weather-data-property">
           <p className="weather-data-title">Conditions</p>
           <p className="current-weather-data-value">{conditions}</p>
         </span>
+        <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" />
+        <span className="weather-data-property"></span>
       </div>
     </div>
   );
