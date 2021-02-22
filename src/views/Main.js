@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../views/layout/Header";
 import { API_KEY, API_BASE_URL } from "../apis/config";
 import UseFetch from "../hooks/UseFetch";
@@ -11,7 +11,7 @@ import Footer from "../views/layout/Footer";
 // list of cities to pull lat/lng from
 // import cities from "cities.json";
 
-const Main = () => {
+const Main = ({ userLocation }) => {
   const { data, error, isLoading, setUrl } = UseFetch();
 
   const getCurrentWeather = () => {
@@ -31,7 +31,6 @@ const Main = () => {
   };
 
   // TODO convert city value into lat/lng properties to use in the setUrl function
-
   useEffect(() => {
     setUrl(
       `${API_BASE_URL}/data/2.5/onecall?lat=${40.6501}&lon=${-73.94958}&appid=${API_KEY}&units=imperial`
@@ -42,9 +41,10 @@ const Main = () => {
       <div className="main">
         <Header />
         <CitySelector
-          onSearch={(city) =>
+          // pass up the current lat/lng of the city that the user types in
+          onSearch={(city, lat, lng) =>
             setUrl(
-              `${API_BASE_URL}/data/2.5/onecall?lat=${40.6501}&lon=${-73.94958}&appid=${API_KEY}&units=imperial`
+              `${API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=imperial`
             )
           }
         />

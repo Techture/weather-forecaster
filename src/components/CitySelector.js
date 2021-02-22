@@ -6,6 +6,14 @@ import { FormControl, Button } from "react-bootstrap";
 const CitySelector = ({ onSearch }) => {
   const [city, setCity] = useState("");
 
+  const [userLocation, setUserLocation] = useState({
+    lat: 64.128288,
+    lng: -21.827774,
+    name: "Reykjavík",
+  });
+
+  // console.log("userlocation >> ", userLocation);
+
   // set city in localStorage
   useEffect(() => {
     const localCityName = localStorage.getItem("city");
@@ -37,7 +45,7 @@ const CitySelector = ({ onSearch }) => {
       <div className="weather-search-submit">
         <Button
           className="weather-search-button"
-          onClick={() => onSearch(city)}
+          onClick={() => onSearch(city, userLocation.lat, userLocation.lng)}
         >
           <FaArrowRight />{" "}
         </Button>
