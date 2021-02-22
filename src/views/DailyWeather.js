@@ -3,8 +3,6 @@ import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
 
 const DailyWeather = ({ dailyWeather, timezone, city }) => {
-  // console.log("Daily Weather >>", dailyWeather);
-
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
   };

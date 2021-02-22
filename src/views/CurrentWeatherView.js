@@ -6,8 +6,6 @@ const CurrentWeatherView = ({ currentWeather, city }) => {
   const conditions = weather[0].main;
   const icon = weather[0].icon;
 
-  console.log("Current Weather Data >>", currentWeather);
-
   const roundedTemp = Math.round(temp);
   const roundedFeelsLike = Math.round(feels_like);
 
