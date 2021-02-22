@@ -3,7 +3,7 @@ import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
 
 const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
-  console.log("Hourly Weather >>", hourlyWeather);
+  // console.log("Hourly Weather >>", hourlyWeather);
 
   // round the decimal from hourlyWeather.temp
   const roundTemp = (tempToRound) => {

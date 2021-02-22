@@ -5,8 +5,7 @@ const CurrentWeatherView = ({ currentWeather, city }) => {
   const { temp, weather } = currentWeather;
   const conditions = weather[0].main;
 
-  console.log("Current Weather Data >>", currentWeather);
-  console.log("City >>", city);
+  // console.log("Current Weather Data >>", currentWeather);
 
   const roundedTemp = Math.round(temp);
 

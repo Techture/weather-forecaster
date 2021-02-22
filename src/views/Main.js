@@ -13,7 +13,7 @@ import Footer from "../views/layout/Footer";
 
 const Main = () => {
   const { data, error, isLoading, setUrl } = UseFetch();
-  console.log("MAIN DATA >>", data);
+  // console.log("MAIN DATA >>", data);
 
   const getCurrentWeather = () => {
     if (error) return <h2>Sorry, {error}.</h2>;
