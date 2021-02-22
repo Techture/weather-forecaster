@@ -3,9 +3,9 @@ import Header from "../views/layout/Header";
 import { API_KEY, API_BASE_URL } from "../apis/config";
 import UseFetch from "../hooks/UseFetch";
 import CitySelector from "../components/CitySelector";
-import DailyWeatherList from "./DailyWeatherList";
-import HourlyWeatherList from "./HourlyWeatherList";
-import CurrentWeatherView from "./CurrentWeatherView";
+import DailyWeather from "./DailyWeather";
+import HourlyWeather from "./HourlyWeather";
+import CurrentWeatherView from "./CurrentWeather";
 import Footer from "../views/layout/Footer";
 
 // list of cities to pull lat/lng from
@@ -17,7 +17,7 @@ const Main = () => {
 
   const getCurrentWeather = () => {
     if (error) return <h2>Sorry, {error}.</h2>;
-    if (!data && isLoading) return <h2>Loading...</h2>;
+    if (!data && isLoading) return <h2 className="error">Loading...</h2>;
     if (!data) return null;
     return (
       <>
@@ -25,13 +25,13 @@ const Main = () => {
           currentWeather={data.current}
           city={data.timezone}
         />
-        <DailyWeatherList dailyWeather={data.daily} city={data.timezone} />
-        <HourlyWeatherList hourlyWeather={data.hourly} city={data.timezone} />
+        <DailyWeather dailyWeather={data.daily} city={data.timezone} />
+        <HourlyWeather hourlyWeather={data.hourly} city={data.timezone} />
       </>
     );
   };
 
-  // TODO convert city into lat/lng properties to use in the setUrl function
+  // TODO convert city value into lat/lng properties to use in the setUrl function
 
   return (
     <>
@@ -44,7 +44,7 @@ const Main = () => {
             )
           }
         />
-        {/* grab current weather */}
+        {/* get current weather data from the onecall endpoint */}
         {getCurrentWeather()}
       </div>
       <Footer />

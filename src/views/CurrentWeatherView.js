@@ -1,23 +1,32 @@
 import React from "react";
-import CurrentWeather from "./CurrentWeather";
+import DateTime from "../components/DateTime";
 
-const CurrentWeatherView = ({ currentWeather, city }) => {
-  const { temp, weather, feels_like } = currentWeather;
-  const conditions = weather[0].main;
-  const icon = weather[0].icon;
-
-  const roundedTemp = Math.round(temp);
-  const roundedFeelsLike = Math.round(feels_like);
-
+const CurrentWeather = ({ city, temp, feels_like, conditions, icon }) => {
   return (
-    <CurrentWeather
-      city={city}
-      temp={roundedTemp}
-      feels_like={roundedFeelsLike}
-      conditions={conditions}
-      icon={icon}
-    />
+    <div className="current-weather-data">
+      <p className="current-weather-tagline">
+        Current Forecast |{" "}
+        <span className="current-weather-data-city">{city}</span>
+      </p>
+      <DateTime />
+      <div className="weather-data-box">
+        <span className="weather-data-property">
+          <p className="weather-data-title">Temperature</p>
+          <p className="current-weather-data-value">{temp}&#176;</p>
+        </span>
+        <span className="weather-data-property">
+          <p className="weather-data-title">Feels Like</p>
+          <p className="current-weather-data-value">{feels_like}&#176;</p>
+        </span>
+        <span className="weather-data-property">
+          <p className="weather-data-title">Conditions</p>
+          <p className="current-weather-data-value">{conditions}</p>
+        </span>
+        <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" />
+        <span className="weather-data-property"></span>
+      </div>
+    </div>
   );
 };
 
-export default CurrentWeatherView;
+export default CurrentWeather;

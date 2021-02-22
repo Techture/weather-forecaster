@@ -30,10 +30,16 @@
 
 .hourly-weather-data-property {
   display: flex;
-  width: 320px;
+  width: 360px;
   flex-basis: 0px;
   padding: 2rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.hourly-weather-data-icon {
+  position: absolute;
+  margin-top: -1.5rem;
+  height: 50px;
 }
 
 /* zebra stripe the hourly data rows */
