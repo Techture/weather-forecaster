@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "../views/layout/Header";
 import { API_KEY, API_BASE_URL } from "../apis/config";
-import UseFetch from "../hooks/UseFetch";
+import useFetch from "../hooks/UseFetch";
 import CitySelector from "../components/CitySelector";
 import DailyWeather from "./DailyWeather";
 import HourlyWeather from "./HourlyWeather";
@@ -9,7 +9,7 @@ import CurrentWeatherView from "./CurrentWeather";
 import Footer from "../views/layout/Footer";
 
 const Main = () => {
-  const { data, error, isLoading, setUrl } = UseFetch();
+  const { data, error, isLoading, setUrl } = useFetch();
 
   const getCurrentWeather = () => {
     if (error) return <h2>Sorry, {error}.</h2>;
