@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../views/layout/Header";
 import { API_KEY, API_BASE_URL } from "../apis/config";
 import UseFetch from "../hooks/UseFetch";
@@ -32,6 +32,11 @@ const Main = () => {
 
   // TODO convert city value into lat/lng properties to use in the setUrl function
 
+  useEffect(() => {
+    setUrl(
+      `${API_BASE_URL}/data/2.5/onecall?lat=${40.6501}&lon=${-73.94958}&appid=${API_KEY}&units=imperial`
+    );
+  }, []);
   return (
     <>
       <div className="main">

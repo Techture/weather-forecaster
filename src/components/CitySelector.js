@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Tagline from "./Tagline";
 import { FaArrowRight } from "react-icons/fa";
 import { FormControl, Button } from "react-bootstrap";
-import FormatTime from "../utils/FormatTime";
 
 const CitySelector = ({ onSearch }) => {
   const [city, setCity] = useState("");
