@@ -3,6 +3,13 @@ import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
 
 const DailyWeatherView = ({ dailyWeather, timezone, city }) => {
+  let cityFormatter = city
+    .split("/")
+    .slice(1, 2)
+    .join(" ")
+    .split("_")
+    .join(" ");
+
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
   };
@@ -18,7 +25,8 @@ const DailyWeatherView = ({ dailyWeather, timezone, city }) => {
   return (
     <div className="daily-weather-data">
       <p className="daily-weather-tagline">
-        8 Day Forecast |<span className="daily-weather-data-city"> {city}</span>
+        8 Day Forecast |
+        <span className="daily-weather-data-city"> {cityFormatter}</span>
       </p>
 
       <Accordion title={"Click To View >>"} isExpand={false}>

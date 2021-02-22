@@ -2,11 +2,19 @@ import React from "react";
 import DateTime from "../components/DateTime";
 
 const CurrentWeather = ({ city, temp, feels_like, conditions, icon }) => {
+  // format the value of timezone to get just the city
+  let cityFormatter = city
+    .split("/")
+    .slice(1, 2)
+    .join(" ")
+    .split("_")
+    .join(" ");
+
   return (
     <div className="current-weather-data">
       <p className="current-weather-tagline">
         Current Forecast |{" "}
-        <span className="current-weather-data-city">{city}</span>
+        <span className="current-weather-data-city">{cityFormatter}</span>
       </p>
       <DateTime />
       <div className="weather-data-box">

@@ -3,6 +3,12 @@ import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
 
 const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
+  let cityFormatter = city
+    .split("/")
+    .slice(1, 2)
+    .join(" ")
+    .split("_")
+    .join(" ");
   // round the decimal from hourlyWeather.temp
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
@@ -22,7 +28,7 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
     <div className="hourly-weather-data">
       <p className="hourly-weather-tagline">
         48 Hour Forecast |
-        <span className="hourly-weather-data-city"> {city}</span>
+        <span className="hourly-weather-data-city"> {cityFormatter}</span>
       </p>
 
       <Accordion title={"Click To View >>"} isExpand={false}>
