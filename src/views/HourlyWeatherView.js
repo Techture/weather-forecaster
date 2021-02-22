@@ -3,6 +3,7 @@ import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
 
 const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
+  console.log("hourly weather >> ", hourlyWeather);
   // round the decimal from hourlyWeather.temp
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
@@ -31,11 +32,12 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
             return (
               <span className="hourly-weather-data-property" key={idx}>
                 <p className="weather-data-title">
-                  Date | Time | Temp | Conditions
+                  Date | Time | Temp | Feels Like | Conditions
                 </p>
                 <p className="weather-data-value">
                   {formatDate(hour.dt)} | {formatTime(hour.dt)} |{" "}
-                  {roundTemp(hour.temp)}&#176; | {hour.weather[0].main}
+                  {roundTemp(hour.temp)}&#176; | {roundTemp(hour.feels_like)}
+                  &#176; | {hour.weather[0].main}
                   <img
                     className="daily-weather-data-icon"
                     src={`https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
