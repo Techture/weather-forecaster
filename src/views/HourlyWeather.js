@@ -3,6 +3,8 @@ import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
 
 const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
+  console.log("Hourly Weather >>", hourlyWeather);
+
   // round the decimal from hourlyWeather.temp
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
@@ -34,8 +36,8 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
                   Date | Time | Temperature | Conditions
                 </p>
                 <p className="weather-data-value">
-                  {formatDate(hour.dt)} {formatTime(hour.dt)}{" "}
-                  {roundTemp(hour.temp.day)}&#176; {hour.weather[0].main}
+                  {formatDate(hour.dt)} | {formatTime(hour.dt)} |{" "}
+                  {roundTemp(hour.temp)}&#176; | {hour.weather[0].main}
                 </p>
               </span>
             );

@@ -3,7 +3,7 @@ import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
 
 const DailyWeather = ({ dailyWeather, timezone, city }) => {
-  console.log("Daily Weather >>", dailyWeather);
+  // console.log("Daily Weather >>", dailyWeather);
 
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
@@ -23,7 +23,7 @@ const DailyWeather = ({ dailyWeather, timezone, city }) => {
         8 Day Forecast |<span className="daily-weather-data-city"> {city}</span>
       </p>
 
-      <Accordion title={"Click To View >>"} isExpand={true}>
+      <Accordion title={"Click To View >>"} isExpand={false}>
         <div className="daily-weather-data-box">
           {dailyWeather.map((day, idx) => {
             return (
