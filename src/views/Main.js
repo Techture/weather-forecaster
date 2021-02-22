@@ -43,7 +43,7 @@ const Main = () => {
             )
           }
         />
-        {/* get current weather data from the onecall endpoint */}
+        {/* funnel weather data from the onecall endpoint */}
         {getCurrentWeather()}
       </div>
       <Footer />
