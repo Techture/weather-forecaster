@@ -8,9 +8,6 @@ import HourlyWeather from "./HourlyWeather";
 import CurrentWeatherView from "./CurrentWeather";
 import Footer from "../views/layout/Footer";
 
-// list of cities to pull lat/lng from
-// import cities from "cities.json";
-
 const Main = ({ userLocation }) => {
   const { data, error, isLoading, setUrl } = UseFetch();
 
@@ -31,11 +28,12 @@ const Main = ({ userLocation }) => {
   };
 
   // TODO convert city value into lat/lng properties to use in the setUrl function
-  useEffect(() => {
-    setUrl(
-      `${API_BASE_URL}/data/2.5/onecall?lat=${40.6501}&lon=${-73.94958}&appid=${API_KEY}&units=imperial`
-    );
-  }, []);
+  // useEffect(() => {
+  //   setUrl(
+  //     `${API_BASE_URL}/data/2.5/onecall?lat=${40.6501}&lon=${-73.94958}&appid=${API_KEY}&units=imperial`
+  //   );
+  // }, []);
+
   return (
     <>
       <div className="main">

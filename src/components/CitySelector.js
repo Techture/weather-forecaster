@@ -3,43 +3,63 @@ import Tagline from "./Tagline";
 import { FaArrowRight } from "react-icons/fa";
 import { FormControl, Button } from "react-bootstrap";
 
+// list of cities to pull lat/lng from
+import cities from "cities.json";
+
 const CitySelector = ({ onSearch }) => {
   const [city, setCity] = useState("");
-
-  // as the user types a city, the city is matched with its lat/lng
-  // helper to match the city names
-  //     const cleanCityName = (cityName) => {
-  //       return cityName.toLowerCase();
-  //     };
-
-  //     const updateUserLocation = () => {
-  //       for (const cityIndex of cities) {
-  //         if (cleanCityName(cityIndex.name) === cleanCityName(city)) {
-  //           setCityLocation({
-  //             latitude: cityIndex.lat,
-  //             longitude: cityIndex.lng,
-  //             name: cityIndex.name,
-  //           });
-  //           setCity(cityIndex.name);
-  //         }
-  //       }
-  //     };
-
-  //     updateUserLocation();
-
   const [userLocation, setUserLocation] = useState({
     lat: 64.128288,
     lng: -21.827774,
-    name: "Reykjavík",
+    name: "",
   });
+
+  // as the user types a city, the city is matched with its lat/lng
+
+  // helper to match the city names
+  const cleanCityName = (cityName) => {
+    return cityName.toLowerCase();
+  };
+
+  const updateUserLocation = (cityName) => {
+    // const filterCity = cities.filter((c) => c.name === cityName);
+
+    // let newUserLocation = {
+    //   lat: filterCity.lat,
+    //   lng: filterCity.lng,
+    //   name: filterCity.name,
+    // };
+
+    // setUserLocation({ userLocation: newUserLocation });
+    // setCity(filterCity.name);
+
+    // console.log("filtered city name >>", filterCity.name);
+    // return filterCity;
+
+    for (const cityIndex of cities) {
+      if (cityIndex.name === cityName) {
+        setUserLocation({
+          lat: cityIndex.lat,
+          lng: cityIndex.lng,
+          name: cityIndex.name,
+        });
+        setCity(cityIndex.name);
+        console.log("cityindex name >> ", cityIndex.name);
+      }
+    }
+  };
 
   // console.log("userlocation >> ", userLocation);
 
   // set city in localStorage
   useEffect(() => {
+    // updateUserLocation("Rome");
+
     const localCityName = localStorage.getItem("city");
+
     if (localCityName) {
       setCity(JSON.parse(localCityName));
+      updateUserLocation(localCityName);
     }
   }, []);
 
@@ -49,7 +69,7 @@ const CitySelector = ({ onSearch }) => {
 
   const onKeyDown = (event) => {
     if (event.keyCode === 13) {
-      onSearch(city);
+      onSearch(city, userLocation.lat, userLocation.lng);
     }
   };
 
@@ -68,6 +88,7 @@ const CitySelector = ({ onSearch }) => {
           className="weather-search-button"
           onClick={(e) => {
             e.preventDefault();
+            updateUserLocation(city);
             onSearch(city, userLocation.lat, userLocation.lng);
           }}
         >
