@@ -28,7 +28,7 @@ const CitySelector = ({ onSearch }) => {
           name: cityName,
         };
         setUserLocation({ userLocation: newUserLocation });
-        console.log("new user location on load >> ", userLocation);
+        console.log("update user location >> ", userLocation);
       }
     }
   };
