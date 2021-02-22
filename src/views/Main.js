@@ -31,22 +31,6 @@ const Main = () => {
     );
   };
 
-  // const getDailyWeather = () => {
-  //   if (error) return <h2>Sorry, {error}.</h2>;
-  //   if (!data && isLoading) return <h2>Loading...</h2>;
-  //   if (!data) return null;
-  //   return <DailyWeatherList dailyWeather={data.daily} city={data.city.name} />;
-  // };
-
-  // const getHourlyWeather = () => {
-  //   if (error) return <h2>Sorry, {error}.</h2>;
-  //   if (!data && isLoading) return <h2>Loading...</h2>;
-  //   if (!data) return null;
-  //   return (
-  //     <HourlyWeatherList hourlyWeather={data.list} city={data.city.name} />
-  //   );
-  // };
-
   // TODO convert city into lat/lng properties to use in the setUrl function
 
   return (
@@ -54,14 +38,10 @@ const Main = () => {
       <div className="main">
         <Header />
         <CitySelector
-          onSearch={
-            (city) =>
-              setUrl(
-                `${API_BASE_URL}/data/2.5/onecall?lat=${40.6501}&lon=${-73.94958}&appid=${API_KEY}&units=imperial`
-              )
-            // setUrl(
-            //   `${API_BASE_URL}/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`
-            // )
+          onSearch={(city) =>
+            setUrl(
+              `${API_BASE_URL}/data/2.5/onecall?lat=${40.6501}&lon=${-73.94958}&appid=${API_KEY}&units=imperial`
+            )
           }
         />
         {/* grab current weather */}

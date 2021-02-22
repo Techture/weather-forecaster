@@ -29,7 +29,7 @@ const DailyWeather = ({ dailyWeather, timezone, city }) => {
             return (
               <span className="daily-weather-data-property" key={idx}>
                 <p className="weather-data-title">
-                  Date | Time | Temperature | Conditions
+                  Date | Time | Temp | Conditions
                 </p>
                 <p className="weather-data-value">
                   {formatDate(day.dt)} | {formatTime(day.dt)} |{" "}

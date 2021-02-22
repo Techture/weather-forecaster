@@ -17,7 +17,7 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
 
   // format date from hourlyWeather[0].dt
   const formatDate = (dateToFormat) => {
-    return FormatTime(dateToFormat, timezone, "MM/DD/YYYY");
+    return FormatTime(dateToFormat, timezone, "MM/DD");
   };
 
   return (
@@ -33,7 +33,7 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
             return (
               <span className="hourly-weather-data-property" key={idx}>
                 <p className="weather-data-title">
-                  Date | Time | Temperature | Conditions
+                  Date | Time | Temp | Conditions
                 </p>
                 <p className="weather-data-value">
                   {formatDate(hour.dt)} | {formatTime(hour.dt)} |{" "}
