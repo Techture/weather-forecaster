@@ -29,7 +29,7 @@ const DailyWeatherView = ({ dailyWeather, timezone, city }) => {
         <span className="daily-weather-data-city"> {cityFormatter}</span>
       </p>
 
-      <Accordion title={"Click To View >>"} isExpand={false}>
+      <Accordion title={"Click To View >>"} isExpand={true}>
         <div className="daily-weather-data-box">
           {dailyWeather.map((day, idx) => {
             return (
