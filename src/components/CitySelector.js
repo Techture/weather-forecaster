@@ -27,8 +27,6 @@ const CitySelector = ({ onSearch }) => {
     }
   };
 
-  console.log("user location on load >> ", userLocation);
-
   // set city in localStorage
   useEffect(() => {
     const localCityName = localStorage.getItem("city");
