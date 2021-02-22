@@ -5,7 +5,7 @@ import useFetch from "../hooks/UseFetch";
 import CitySelector from "../components/CitySelector";
 import DailyWeather from "./DailyWeather";
 import HourlyWeather from "./HourlyWeather";
-import CurrentWeatherView from "./CurrentWeather";
+import CurrentWeather from "./CurrentWeather";
 import Footer from "../views/layout/Footer";
 
 const Main = () => {
@@ -17,10 +17,7 @@ const Main = () => {
     if (!data) return null;
     return (
       <>
-        <CurrentWeatherView
-          currentWeather={data.current}
-          city={data.timezone}
-        />
+        <CurrentWeather currentWeather={data.current} city={data.timezone} />
         <DailyWeather dailyWeather={data.daily} city={data.timezone} />
         <HourlyWeather hourlyWeather={data.hourly} city={data.timezone} />
       </>

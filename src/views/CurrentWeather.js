@@ -1,7 +1,7 @@
 import React from "react";
-import CurrentWeather from "./CurrentWeatherView";
+import CurrentWeatherView from "./CurrentWeatherView";
 
-const CurrentWeatherView = ({ currentWeather, city }) => {
+const CurrentWeather = ({ currentWeather, city }) => {
   const { temp, weather, feels_like } = currentWeather;
   const conditions = weather[0].main;
   const icon = weather[0].icon;
@@ -10,7 +10,7 @@ const CurrentWeatherView = ({ currentWeather, city }) => {
   const roundedFeelsLike = Math.round(feels_like);
 
   return (
-    <CurrentWeather
+    <CurrentWeatherView
       city={city}
       temp={roundedTemp}
       feels_like={roundedFeelsLike}
@@ -20,4 +20,4 @@ const CurrentWeatherView = ({ currentWeather, city }) => {
   );
 };
 
-export default CurrentWeatherView;
+export default CurrentWeather;
