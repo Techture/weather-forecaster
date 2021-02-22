@@ -3,8 +3,9 @@
 .tagline {
   font-size: 1.5rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   letter-spacing: 0.5px;
+  padding-right: 10px;
 }
 
 .tagline-wrapper {
@@ -26,7 +27,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
 }
 
 .weather-data-property {

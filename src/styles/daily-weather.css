@@ -3,7 +3,6 @@
 .daily-weather-data {
   text-align: center;
   background-color: var(--main-white);
-  margin-bottom: 30px;
 }
 
 .daily-weather-data-box {
@@ -30,10 +29,18 @@
 
 .daily-weather-data-property {
   display: flex;
-  width: 320px;
+  width: 430px;
   flex-basis: 0px;
   padding: 2rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.daily-weather-data-icon {
+  position: relative;
+  margin-top: -3.5rem;
+  height: 55px;
+  padding-top: -2rem;
+  top: 2rem;
 }
 
 /* zebra stripe the daily data rows */

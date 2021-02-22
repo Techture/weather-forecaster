@@ -1,25 +1,22 @@
 import React from "react";
-import DateTime from "../components/DateTime";
+import CurrentWeatherView from "./CurrentWeatherView";
 
-const CurrentWeather = ({ city, temp, temp_max, temp_min, conditions }) => {
+const CurrentWeather = ({ currentWeather, city }) => {
+  const { temp, weather, feels_like } = currentWeather;
+  const conditions = weather[0].main;
+  const icon = weather[0].icon;
+
+  const roundedTemp = Math.round(temp);
+  const roundedFeelsLike = Math.round(feels_like);
+
   return (
-    <div className="current-weather-data">
-      <p className="current-weather-tagline">
-        Current Forecast |{" "}
-        <span className="current-weather-data-city">{city}</span>
-      </p>
-      <DateTime />
-      <div className="weather-data-box">
-        <span className="weather-data-property">
-          <p className="weather-data-title">Temperature</p>
-          <p className="current-weather-data-value">{temp}&#176;</p>
-        </span>
-        <span className="weather-data-property">
-          <p className="weather-data-title">Conditions</p>
-          <p className="current-weather-data-value">{conditions}</p>
-        </span>
-      </div>
-    </div>
+    <CurrentWeatherView
+      city={city}
+      temp={roundedTemp}
+      feels_like={roundedFeelsLike}
+      conditions={conditions}
+      icon={icon}
+    />
   );
 };
 

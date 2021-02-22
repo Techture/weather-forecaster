@@ -1,99 +1,28 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import Header from "../views/layout/Header";
-import CurrentWeatherData from "../views/CurrentWeatherData";
-import HourlyWeatherData from "../views/HourlyWeatherData";
-import DailyWeatherData from "../views/DailyWeatherData";
-import Error from "../components/Error";
+import { API_KEY, API_BASE_URL } from "../apis/config";
+import CitySelector from "../components/CitySelector";
+import useFetch from "../hooks/UseFetch";
+import Weather from "../components/Weather";
 import Footer from "../views/layout/Footer";
 
-// api key is provided for the review, and will be deleted when review is complete
-const API_KEY = "f4d7207b99b6170b521b3903384b9293";
-
 const Main = () => {
-  const [currentWeather, setCurrentWeather] = useState(null);
-  const [hourlyWeather, setHourlyWeather] = useState(null);
-  const [dailyWeather, setDailyWeather] = useState(null);
-  const [timezone, setTimezone] = useState(null);
-  const [city, setCity] = useState(null);
-  const [conditions, setConditions] = useState(null);
-  const [error, setError] = useState(null);
-
-  // get user location
-  const fetchUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let pos = {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        };
-
-        // use onecall endpoint for current, hourly and daily weather info
-        const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${pos.latitude}&lon=${pos.longitude}&appid=${API_KEY}&units=imperial`;
-
-        axios.get(url).then((res) => {
-          let d = res.data;
-
-          // format the value of timezone to get just the city
-          let cityFormatter = d.timezone
-            .split("/")
-            .slice(1, 2)
-            .join(" ")
-            .split("_")
-            .join(" ");
-
-          setCurrentWeather(d.current);
-          setHourlyWeather(d.hourly);
-          setDailyWeather(d.daily);
-          setTimezone(d.timezone);
-          setCity(cityFormatter);
-          setConditions(d.current.weather[0].main);
-          setError(null);
-        });
-      });
-    }
-  };
-
-  useEffect(() => {
-    fetchUserLocation();
-    const localCityName = localStorage.getItem("city");
-    if (localCityName) {
-      setCity(JSON.parse(localCityName));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("city", JSON.stringify(city));
-  });
+  const { setUrl } = useFetch();
 
   return (
     <>
       <div className="main">
         <Header />
-        {error !== null && <p>{<Error error={error} />}</p>}
-        {currentWeather !== null && (
-          <CurrentWeatherData
-            currentWeather={currentWeather}
-            conditions={conditions}
-            city={city}
-          />
-        )}
-
-        {dailyWeather !== null && (
-          <DailyWeatherData
-            dailyWeather={dailyWeather}
-            timezone={timezone}
-            city={city}
-          />
-        )}
-
-        {hourlyWeather !== null && (
-          <HourlyWeatherData
-            hourlyWeather={hourlyWeather}
-            timezone={timezone}
-            city={city}
-          />
-        )}
+        <CitySelector
+          // pass up the current lat/lng of the city that the user types in from CitySelector
+          onSearch={(latitude, longitude) =>
+            setUrl(
+              `${API_BASE_URL}/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=imperial`
+            )
+          }
+        />
+        {/* funnel weather data from the onecall endpoint */}
+        <Weather />
       </div>
       <Footer />
     </>
