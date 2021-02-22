@@ -14,11 +14,6 @@ const CitySelector = ({ onSearch }) => {
     name: "",
   });
 
-  // helper to match the city names
-  // const cleanCityName = (cityName) => {
-  //   return cityName.toLowerCase();
-  // };
-
   const updateUserLocation = (cityName) => {
     for (const cityIndex of cities) {
       if (cityIndex.name === cityName) {
