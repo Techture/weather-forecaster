@@ -36,6 +36,11 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
                 <p className="weather-data-value">
                   {formatDate(hour.dt)} | {formatTime(hour.dt)} |{" "}
                   {roundTemp(hour.temp)}&#176; | {hour.weather[0].main}
+                  <img
+                    className="daily-weather-data-icon"
+                    src={`https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
+                    alt=""
+                  />
                 </p>
               </span>
             );

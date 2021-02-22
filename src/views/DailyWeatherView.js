@@ -35,7 +35,7 @@ const DailyWeatherView = ({ dailyWeather, timezone, city }) => {
                   {formatDate(day.dt)} | {formatTime(day.dt)} |{" "}
                   {roundTemp(day.temp.day)}&#176; | {roundTemp(day.temp.max)} |{" "}
                   {roundTemp(day.temp.min)}
-                  &#176; | {day.weather[0].main} |{" "}
+                  &#176; | {day.weather[0].main}
                   <img
                     className="daily-weather-data-icon"
                     src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}

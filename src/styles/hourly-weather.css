@@ -37,9 +37,11 @@
 }
 
 .hourly-weather-data-icon {
-  position: absolute;
-  margin-top: -1.5rem;
-  height: 50px;
+  position: relative;
+  margin-top: -3.5rem;
+  height: 55px;
+  padding-top: -2rem;
+  top: 2rem;
 }
 
 /* zebra stripe the hourly data rows */
