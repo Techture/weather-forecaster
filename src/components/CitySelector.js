@@ -9,12 +9,10 @@ import cities from "cities.json";
 const CitySelector = ({ onSearch }) => {
   const [city, setCity] = useState("");
   const [userLocation, setUserLocation] = useState({
-    lat: 64.128288,
-    lng: -21.827774,
+    latitude: null,
+    longitude: null,
     name: "",
   });
-
-  // as the user types a city, the city is matched with its lat/lng
 
   // helper to match the city names
   const cleanCityName = (cityName) => {
@@ -22,44 +20,27 @@ const CitySelector = ({ onSearch }) => {
   };
 
   const updateUserLocation = (cityName) => {
-    // const filterCity = cities.filter((c) => c.name === cityName);
-
-    // let newUserLocation = {
-    //   lat: filterCity.lat,
-    //   lng: filterCity.lng,
-    //   name: filterCity.name,
-    // };
-
-    // setUserLocation({ userLocation: newUserLocation });
-    // setCity(filterCity.name);
-
-    // console.log("filtered city name >>", filterCity.name);
-    // return filterCity;
-
     for (const cityIndex of cities) {
-      if (cityIndex.name === cityName) {
-        setUserLocation({
-          lat: cityIndex.lat,
-          lng: cityIndex.lng,
+      if (cleanCityName(cityIndex.name) === cleanCityName(cityName)) {
+        let newUserLocation = {
+          latitude: cityIndex.lat,
+          longitude: cityIndex.lng,
           name: cityIndex.name,
-        });
-        setCity(cityIndex.name);
-        console.log("cityindex name >> ", cityIndex.name);
+        };
+        setUserLocation({ userLocation: newUserLocation });
+
+        console.log("new user location after update >> ", newUserLocation);
       }
     }
   };
 
-  // console.log("userlocation >> ", userLocation);
+  console.log("user location on load >> ", userLocation);
 
   // set city in localStorage
   useEffect(() => {
-    // updateUserLocation("Rome");
-
     const localCityName = localStorage.getItem("city");
-
     if (localCityName) {
       setCity(JSON.parse(localCityName));
-      updateUserLocation(localCityName);
     }
   }, []);
 
@@ -69,7 +50,7 @@ const CitySelector = ({ onSearch }) => {
 
   const onKeyDown = (event) => {
     if (event.keyCode === 13) {
-      onSearch(city, userLocation.lat, userLocation.lng);
+      onSearch(userLocation.latitude, userLocation.longitude);
     }
   };
 
@@ -89,7 +70,7 @@ const CitySelector = ({ onSearch }) => {
           onClick={(e) => {
             e.preventDefault();
             updateUserLocation(city);
-            onSearch(city, userLocation.lat, userLocation.lng);
+            onSearch(userLocation.latitude, userLocation.longitude);
           }}
         >
           <FaArrowRight />{" "}
