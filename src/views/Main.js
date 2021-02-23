@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../views/layout/Header";
-import { API_KEY, API_BASE_URL } from "../apis/config";
 import CitySelector from "../components/CitySelector";
-import useFetch from "../hooks/UseFetch";
 import Weather from "../components/Weather";
 import Footer from "../views/layout/Footer";
+import fetchWeatherData from "../utils/FetchWeatherData";
 
 const Main = () => {
-  const { setUrl } = useFetch();
+  // get weather data on initial load
+  useEffect(() => {
+    fetchWeatherData();
+  }, []);
 
   return (
     <>
@@ -16,12 +18,9 @@ const Main = () => {
         <CitySelector
           // pass up the current lat/lng of the city that the user types in from CitySelector
           onSearch={(latitude, longitude) =>
-            setUrl(
-              `${API_BASE_URL}/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=imperial`
-            )
+            fetchWeatherData(latitude, longitude)
           }
         />
-        {/* funnel weather data from the onecall endpoint */}
         <Weather />
       </div>
       <Footer />
