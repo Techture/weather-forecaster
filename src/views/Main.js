@@ -1,14 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../views/layout/Header";
 import CitySelector from "../components/CitySelector";
 import Weather from "../components/Weather";
 import Footer from "../views/layout/Footer";
-import fetchWeatherData from "../utils/FetchWeatherData";
+// import fetchWeatherData from "../utils/FetchWeatherData";
+
+import { API_BASE_URL, API_KEY } from "../apis/config";
 
 const Main = () => {
+  const [weatherData, setWeatherData] = useState(null);
+
+  const fetchWeatherData = (latitude, longitude) => {
+    fetch(
+      `${API_BASE_URL}/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=imperial`
+    )
+      .then((data) => data.json())
+      .then((results) => {
+        setWeatherData(results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   // get weather data on initial load
   useEffect(() => {
-    fetchWeatherData();
+    fetchWeatherData("64.128288", "-21.827774");
   }, []);
 
   return (
@@ -21,7 +38,7 @@ const Main = () => {
             fetchWeatherData(latitude, longitude)
           }
         />
-        <Weather />
+        <Weather data={weatherData} />
       </div>
       <Footer />
     </>

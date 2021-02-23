@@ -4,11 +4,6 @@ import HourlyWeather from "../views/HourlyWeather";
 import CurrentWeather from "../views/CurrentWeather";
 
 const Weather = ({ data }) => {
-  // TODO use geolocation to load data from users lat/lng
-  // this useEffect loads some placeholder data for testing
-
-  console.log("Data >> ", data);
-
   return (
     <>
       {data ? (
@@ -17,7 +12,9 @@ const Weather = ({ data }) => {
           <DailyWeather dailyWeather={data.daily} city={data.timezone} />
           <HourlyWeather hourlyWeather={data.hourly} city={data.timezone} />
         </>
-      ) : null}
+      ) : (
+        <h1 className="error">Please enter another city.</h1>
+      )}
     </>
   );
 };

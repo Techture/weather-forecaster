@@ -1,16 +1,19 @@
+import { useState } from "react";
 import { API_KEY, API_BASE_URL } from "../apis/config";
-import axios from "axios";
 
 const FetchWeatherData = (latitude, longitude) => {
-  return axios
-    .get(
-      `${API_BASE_URL}/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=imperial`
-    )
-    .then(({ data }) => {
-      return data;
+  const [weatherData, setWeatherData] = useState(null);
+
+  fetch(
+    `${API_BASE_URL}/data/2.5/onecall?lat=${latitude}&lon=${latitude}&appid=${API_KEY}&units=imperial`
+  )
+    .then((data) => data.json())
+    .then((results) => {
+      setWeatherData({ weatherData: results });
+      return weatherData;
     })
-    .catch((err) => {
-      console.log("error >>", err);
+    .catch((error) => {
+      console.log(error);
     });
 };
 

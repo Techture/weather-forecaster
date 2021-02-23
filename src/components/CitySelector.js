@@ -9,9 +9,9 @@ import cities from "cities.json";
 const CitySelector = ({ onSearch }) => {
   const [city, setCity] = useState("");
   const [userLocation, setUserLocation] = useState({
-    latitude: null,
-    longitude: null,
-    name: "",
+    latitude: 64.128288,
+    longitude: -21.827774,
+    name: "Reykjavík",
   });
 
   const updateUserLocation = (cityName) => {
@@ -23,12 +23,12 @@ const CitySelector = ({ onSearch }) => {
           name: cityName,
         };
         setUserLocation({ userLocation: newUserLocation });
-        console.log("update user location >> ", userLocation);
+        // console.log("user location after update >> ", userLocation);
       }
     }
   };
 
-  console.log("user location on load >> ", userLocation);
+  // console.log("user location on load >> ", userLocation);
 
   // set city in localStorage
   useEffect(() => {
@@ -65,6 +65,7 @@ const CitySelector = ({ onSearch }) => {
             e.preventDefault();
             updateUserLocation(city);
             onSearch(userLocation.latitude, userLocation.longitude);
+            console.log("city search >>", city);
           }}
         >
           <FaArrowRight />{" "}
