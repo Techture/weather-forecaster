@@ -7,7 +7,7 @@ import { FormControl, Button } from "react-bootstrap";
 import cities from "cities.json";
 
 const CitySelector = ({ onSearch }) => {
-  const [city, setCity] = useState();
+  const [city, setCity] = useState("");
   const [userLocation, setUserLocation] = useState({
     latitude: 64.128288,
     longitude: -21.827774,
