@@ -4,6 +4,7 @@ import CurrentWeather from "../views/CurrentWeather";
 // import HourlyWeather from "../views/HourlyWeather";
 
 const Weather = ({ data }) => {
+  console.log("current weather >> ", data);
   return (
     <>
       {data ? (

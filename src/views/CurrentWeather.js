@@ -9,14 +9,22 @@ const CurrentWeather = ({ currentWeather, city }) => {
   const roundedTemp = Math.round(temp);
   const roundedFeelsLike = Math.round(feels_like);
 
+  console.log("city from current weather >>", city);
+
   return (
-    <CurrentWeatherView
-      city={city}
-      temp={roundedTemp}
-      feels_like={roundedFeelsLike}
-      conditions={conditions}
-      icon={icon}
-    />
+    <>
+      {currentWeather ? (
+        <CurrentWeatherView
+          city={city}
+          temp={roundedTemp}
+          feels_like={roundedFeelsLike}
+          conditions={conditions}
+          icon={icon}
+        />
+      ) : (
+        <h2>Sorry city data not available.</h2>
+      )}
+    </>
   );
 };
 

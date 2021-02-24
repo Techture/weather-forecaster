@@ -26,6 +26,7 @@ const Main = () => {
   // get weather data on initial load
   useEffect(() => {
     fetchWeatherData("64.128288", "-21.827774");
+    console.log("2. useEffect >>");
   }, []);
 
   return (
@@ -37,6 +38,7 @@ const Main = () => {
           onSearch={(latitude, longitude) =>
             fetchWeatherData(latitude, longitude)
           }
+          cityPlaceholder={weatherData}
         />
         <Weather data={weatherData} />
       </div>

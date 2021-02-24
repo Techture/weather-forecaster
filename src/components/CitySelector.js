@@ -6,12 +6,15 @@ import { FormControl, Button } from "react-bootstrap";
 // list of cities to pull lat/lng from
 import cities from "cities.json";
 
-const CitySelector = ({ onSearch }) => {
+const CitySelector = ({ onSearch, cityPlaceholder }) => {
+  // const { timezone } = data.timezone;
+  console.log("weatherData >>", cityPlaceholder);
+
   const [city, setCity] = useState("");
   const [userLocation, setUserLocation] = useState({
-    latitude: 64.128288,
-    longitude: -21.827774,
-    name: "Reykjavík",
+    latitude: null,
+    longitude: null,
+    name: "",
   });
 
   const updateUserLocation = (cityName) => {
@@ -23,15 +26,16 @@ const CitySelector = ({ onSearch }) => {
           name: cityName,
         };
         setUserLocation({ userLocation: newUserLocation });
-        // console.log("user location after update >> ", userLocation);
+        console.log("3. user location after update >> ", userLocation);
       }
     }
   };
 
-  // console.log("user location on load >> ", userLocation);
+  console.log("1. user location on load >> ", userLocation);
 
   // set city in localStorage
   useEffect(() => {
+    // updateUserLocation(city);
     const localCityName = localStorage.getItem("city");
     if (localCityName) {
       setCity(JSON.parse(localCityName));
@@ -46,6 +50,7 @@ const CitySelector = ({ onSearch }) => {
     if (event.keyCode === 13) {
       onSearch(userLocation.latitude, userLocation.longitude);
     }
+    console.log("2. onKeyDown >>", userLocation);
   };
 
   return (
@@ -53,7 +58,7 @@ const CitySelector = ({ onSearch }) => {
       <Tagline />
       <FormControl
         className="weather-search-form weather-search-input"
-        placeholder={userLocation.name}
+        placeholder="Enter a city"
         onChange={(event) => setCity(event.target.value)}
         value={city}
         onKeyDown={onKeyDown}
