@@ -2,40 +2,38 @@ import React, { useEffect, useState } from "react";
 import Tagline from "./Tagline";
 import { FaArrowRight } from "react-icons/fa";
 import { FormControl, Button } from "react-bootstrap";
-
-// list of cities to pull lat/lng from
-import cities from "cities.json";
+import { API_KEY, API_BASE_URL } from "../apis/config";
 
 const CitySelector = ({ onSearch, cityPlaceholder }) => {
-  // const { timezone } = data.timezone;
   console.log("weatherData >>", cityPlaceholder);
 
   const [city, setCity] = useState("");
   const [userLocation, setUserLocation] = useState({
-    latitude: null,
-    longitude: null,
+    lat: null,
+    lon: null,
     name: "",
   });
 
   const updateUserLocation = (cityName) => {
-    for (const cityIndex of cities) {
-      if (cityIndex.name === cityName) {
-        let newUserLocation = {
-          latitude: cityName.lat,
-          longitude: cityName.lng,
+    fetch(
+      `${API_BASE_URL}/geo/1.0/direct?q={cityName}&limit={1}&appid=${API_KEY}`
+    )
+      .then((data) => data.json())
+      .then((results) => {
+        const newUserLocation = {
+          lat: cityName.lat,
+          lon: cityName.lon,
           name: cityName,
         };
         setUserLocation({ userLocation: newUserLocation });
-        console.log("3. user location after update >> ", userLocation);
-      }
-    }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
-  console.log("1. user location on load >> ", userLocation);
 
   // set city in localStorage
   useEffect(() => {
-    // updateUserLocation(city);
     const localCityName = localStorage.getItem("city");
     if (localCityName) {
       setCity(JSON.parse(localCityName));
@@ -47,10 +45,10 @@ const CitySelector = ({ onSearch, cityPlaceholder }) => {
   });
 
   const onKeyDown = (event) => {
+    // event.preventDefault();
     if (event.keyCode === 13) {
-      onSearch(userLocation.latitude, userLocation.longitude);
+      onSearch(userLocation.lat, userLocation.lon);
     }
-    console.log("2. onKeyDown >>", userLocation);
   };
 
   return (
@@ -66,10 +64,10 @@ const CitySelector = ({ onSearch, cityPlaceholder }) => {
       <div className="weather-search-submit">
         <Button
           className="weather-search-button"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={(event) => {
+            event.preventDefault();
             updateUserLocation(city);
-            onSearch(userLocation.latitude, userLocation.longitude);
+            onSearch(userLocation.lat, userLocation.lon);
           }}
         >
           <FaArrowRight />{" "}
