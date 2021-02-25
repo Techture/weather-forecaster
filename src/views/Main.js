@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../views/layout/Header";
 import CitySelector from "../components/CitySelector";
 import Weather from "../components/Weather";
@@ -25,7 +25,7 @@ const Main = () => {
   async function fetchNewWeatherData(lat, lon) {
     try {
       const { data } = await axios(
-        `${API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`
+        `${API_BASE_URL}data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`
       );
 
       setWeatherData(data);
@@ -34,11 +34,12 @@ const Main = () => {
     }
   }
 
+  console.log("Weather Data on load >> ", weatherData);
   // get weather data on initial load
-  useEffect(() => {
-    // fetchWeatherData("64.128288", "-21.827774");
-    // fetchNewWeatherData("64.128288", "-21.827774");
-  }, []);
+  // useEffect(() => {
+  //   // fetchNewWeatherData("64.128288", "-21.827774");
+  //   // fetchNewWeatherData(weatherData.data.lat, weatherData.data.lon);
+  // }, []);
 
   return (
     <>

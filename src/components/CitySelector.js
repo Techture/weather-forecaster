@@ -16,7 +16,7 @@ const CitySelector = ({ onSearch }) => {
   async function updateCityName(cityName) {
     try {
       const { data } = await axios(
-        `${API_BASE_URL}/geo/1.0/direct?q=${cityName}&appid=${API_KEY}`
+        `${API_BASE_URL}geo/1.0/direct?q=${cityName}&appid=${API_KEY}`
       );
 
       const newUserLocation = {
@@ -24,10 +24,11 @@ const CitySelector = ({ onSearch }) => {
         lon: data[0].lon,
         name: data[0].name,
       };
-      setCity(data[0].name);
+      setCity(newUserLocation.name);
       setUserLocation(newUserLocation);
+      console.log("New User Location >> ", newUserLocation);
     } catch (error) {
-      console.error("Err: Update City >> ", error);
+      console.error("Err: Updating City >> ", error);
     }
   }
 
@@ -64,8 +65,8 @@ const CitySelector = ({ onSearch }) => {
         <Button
           className="weather-search-button"
           onClick={(event) => {
-            updateCityName(city);
             event.preventDefault();
+            updateCityName(city);
             onSearch(userLocation.lat, userLocation.lon);
           }}
         >
