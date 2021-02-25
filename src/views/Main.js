@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../views/layout/Header";
 import CitySelector from "../components/CitySelector";
 import Weather from "../components/Weather";
@@ -36,10 +36,15 @@ const Main = () => {
 
   console.log("Weather Data on load >> ", weatherData);
   // get weather data on initial load
-  // useEffect(() => {
-  //   // fetchNewWeatherData("64.128288", "-21.827774");
-  //   // fetchNewWeatherData(weatherData.data.lat, weatherData.data.lon);
-  // }, []);
+  useEffect(() => {
+    //   // fetchNewWeatherData("64.128288", "-21.827774");
+    //   // fetchNewWeatherData(weatherData.data.lat, weatherData.data.lon);
+    if (weatherData) {
+      setWeatherData(weatherData);
+    }
+
+    // setWeatherData(weatherData);
+  }, []);
 
   return (
     <>
@@ -52,7 +57,7 @@ const Main = () => {
         />
 
         {weatherData ? (
-          <Weather data={weatherData} />
+          <Weather data={weatherData} setWeatherData={setWeatherData} />
         ) : /* <h2 className="error">Sorry, that city has no weather data.</h2> */
         null}
       </div>
