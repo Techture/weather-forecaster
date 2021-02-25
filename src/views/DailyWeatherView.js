@@ -41,8 +41,8 @@ const DailyWeatherView = ({ dailyWeather, timezone, city }) => {
                   </p>
                   <p className="weather-data-value">
                     {formatDate(day.dt)} | {formatTime(day.dt)} |{" "}
-                    {roundTemp(day.temp.day)}&#176; | {roundTemp(day.temp.max)}{" "}
-                    | {roundTemp(day.temp.min)}
+                    {roundTemp(day.temp.day)}&#176; | {roundTemp(day.temp.max)}
+                    &#176; | {roundTemp(day.temp.min)}
                     &#176; | {day.weather[0].main}
                     <img
                       className="daily-weather-data-icon"

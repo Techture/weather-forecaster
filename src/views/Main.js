@@ -3,7 +3,6 @@ import Header from "../views/layout/Header";
 import CitySelector from "../components/CitySelector";
 import Weather from "../components/Weather";
 import Footer from "../views/layout/Footer";
-// import fetchWeatherData from "../utils/FetchWeatherData";
 import axios from "axios";
 
 import { API_BASE_URL, API_KEY } from "../apis/config";
@@ -11,19 +10,17 @@ import { API_BASE_URL, API_KEY } from "../apis/config";
 const Main = () => {
   const [weatherData, setWeatherData] = useState(null);
 
-  async function fetchWeatherData(lat, lon) {
-    try {
-      const { data } = await axios(
-        `${API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`
-      );
-
-      setWeatherData(data);
-      console.log("FETCHED FIRST WEATHER >>", data);
-      // return fetchedWeatherData;
-    } catch (error) {
-      console.log("ERR: Fetch Weather >>", error);
-    }
-  }
+  // TODO >> use geolocation to load weather from user's location
+  // async function fetchWeatherData(lat, lon) {
+  //   try {
+  //     const { data } = await axios(
+  //       `${API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`
+  //     );
+  //     setWeatherData(data);
+  //   } catch (error) {
+  //     console.log("ERR: Fetch Weather >>", error);
+  //   }
+  // }
 
   async function fetchNewWeatherData(lat, lon) {
     try {
@@ -31,9 +28,7 @@ const Main = () => {
         `${API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`
       );
 
-      setWeatherData({ weatherData: data });
-      console.log("FETCHED NEW WEATHER >>", data);
-      // return fetchedWeatherData;
+      setWeatherData(data);
     } catch (error) {
       console.log("ERR: Fetch New Weather >>", error);
     }
@@ -42,19 +37,23 @@ const Main = () => {
   // get weather data on initial load
   useEffect(() => {
     // fetchWeatherData("64.128288", "-21.827774");
-    // fetchWeatherData(weatherData.lat, weatherData.lon);
+    // fetchNewWeatherData("64.128288", "-21.827774");
   }, []);
 
   return (
     <>
       <div className="main">
         <Header />
+
         <CitySelector
-          // make a fetchNewWeatherData function to pass up the current lat/lng of the city that the user types in from CitySelector
           onSearch={(lat, lon) => fetchNewWeatherData(lat, lon)}
-          cityPlaceholder={weatherData}
+          data={weatherData}
         />
-        {weatherData ? <Weather data={weatherData} /> : null}
+
+        {weatherData ? (
+          <Weather data={weatherData} />
+        ) : /* <h2 className="error">Sorry, that city has no weather data.</h2> */
+        null}
       </div>
       <Footer />
     </>
