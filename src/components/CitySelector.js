@@ -24,7 +24,9 @@ const CitySelector = ({ onSearch }) => {
         name: data[0].name,
       };
       setUserLocation(newUserLocation);
-    } catch (error) {}
+    } catch (error) {
+      console.log("Err: Updating City Name >> ", error);
+    }
   }
 
   useEffect(() => {
