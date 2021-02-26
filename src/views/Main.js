@@ -50,7 +50,9 @@ const Main = () => {
       );
 
       setWeatherData(data);
-    } catch (error) {}
+    } catch (error) {
+      console.log("ERR: Fetch New Weather >>", error);
+    }
   }
 
   // TODO >> setUserLocation here as well as in CitySelector
