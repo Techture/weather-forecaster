@@ -23,8 +23,6 @@ const Main = () => {
         };
         setUserCoords({ userCoords: newCoords });
         fetchWeatherData(newCoords.latitude, newCoords.longitude);
-        // console.log("Position >>", position);
-        // console.log("Coords >>", coords);
       });
     } else {
       console.log("Geolocation not suppported");
