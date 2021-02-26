@@ -1,2 +1,4 @@
-export const API_KEY = ["f4d7207b99b6170b521b3903384b9293"];
+import { apiKey } from "./secret";
+
+export const API_KEY = [apiKey];
 export const API_BASE_URL = "https://api.openweathermap.org/";
