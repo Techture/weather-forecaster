@@ -60,11 +60,6 @@ const Main = () => {
     getCurrentLocation();
   }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem("user location", JSON.stringify(userLocation));
-  //   // setWeatherData
-  // });
-
   return (
     <>
       <div className="main">
@@ -75,11 +70,13 @@ const Main = () => {
           data={weatherData}
         />
 
-        {weatherData ? (
+        <Weather data={weatherData} />
+
+        {/* {weatherData ? (
           <Weather data={weatherData} />
         ) : (
           <h2 className="error">Sorry, that city has no weather data.</h2>
-        )}
+        )} */}
       </div>
       <Footer />
     </>
