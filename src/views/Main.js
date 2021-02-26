@@ -57,15 +57,13 @@ const Main = () => {
 
   // TODO >> setUserLocation here as well as in CitySelector
   useEffect(() => {
-    // setWeatherData(weatherData);
-    // getCurrentLocation();
-
-    if (!weatherData) {
-      getCurrentLocation();
-    } else if (weatherData) {
-      setWeatherData(weatherData);
-    }
+    getCurrentLocation();
   }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem("user location", JSON.stringify(userLocation));
+  //   // setWeatherData
+  // });
 
   return (
     <>
