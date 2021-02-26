@@ -23,7 +23,6 @@ const Main = () => {
           longitude: position.coords.longitude,
         };
         setUserCoords({ userCoords: newUserCoords });
-        console.log("User Coords >> ", newUserCoords);
         fetchWeatherData(newUserCoords.latitude, newUserCoords.longitude);
       });
     } else {
