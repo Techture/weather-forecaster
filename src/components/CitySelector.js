@@ -6,7 +6,6 @@ import { API_KEY, API_BASE_URL } from "../apis/config";
 import axios from "axios";
 
 const CitySelector = ({ onSearch }) => {
-  const [city, setCity] = useState("");
   const [userLocation, setUserLocation] = useState({
     lat: null,
     lon: null,
@@ -24,26 +23,26 @@ const CitySelector = ({ onSearch }) => {
         lon: data[0].lon,
         name: data[0].name,
       };
-      setCity(newUserLocation.name);
       setUserLocation(newUserLocation);
     } catch (error) {}
   }
 
   // set city in localStorage
   useEffect(() => {
-    const localCityName = localStorage.getItem("city");
-    if (localCityName) {
-      setCity(JSON.parse(localCityName));
+    const localUserLocation = localStorage.getItem("user location");
+    if (localUserLocation) {
+      setUserLocation(JSON.parse(localUserLocation));
     }
   }, []);
 
+  // TODO consider setting weatherData to state here
   useEffect(() => {
-    localStorage.setItem("city", JSON.stringify(city));
+    localStorage.setItem("user location", JSON.stringify(userLocation));
   });
 
   const onKeyDown = (event) => {
     if (event.keyCode === 13) {
-      updateCityName(city);
+      updateCityName(userLocation.name);
       onSearch(userLocation.lat, userLocation.lon);
     }
   };
@@ -54,8 +53,8 @@ const CitySelector = ({ onSearch }) => {
       <FormControl
         className="weather-search-form weather-search-input"
         placeholder="Enter a city"
-        onChange={(event) => setCity(event.target.value)}
-        value={city}
+        onChange={(event) => setUserLocation({ name: event.target.value })}
+        value={userLocation.name}
         onKeyDown={onKeyDown}
       />
       <div className="weather-search-submit">
@@ -63,7 +62,7 @@ const CitySelector = ({ onSearch }) => {
           className="weather-search-button"
           onClick={(event) => {
             event.preventDefault();
-            updateCityName(city);
+            updateCityName(userLocation.name);
             onSearch(userLocation.lat, userLocation.lon);
           }}
         >

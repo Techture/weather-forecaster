@@ -53,11 +53,15 @@ const Main = () => {
     } catch (error) {}
   }
 
+  // TODO >> setUserLocation here as well as in CitySelector
   useEffect(() => {
-    if (weatherData) {
-      setWeatherData(weatherData);
-    } else {
+    // setWeatherData(weatherData);
+    // getCurrentLocation();
+
+    if (!weatherData) {
       getCurrentLocation();
+    } else if (weatherData) {
+      setWeatherData(weatherData);
     }
   }, []);
 
