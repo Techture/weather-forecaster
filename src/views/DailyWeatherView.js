@@ -1,15 +1,9 @@
 import React from "react";
 import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
+import cityFormatter from "../utils/CityFormatter";
 
 const DailyWeatherView = ({ dailyWeather, timezone, city }) => {
-  let cityFormatter = city
-    .split("/")
-    .slice(1, 2)
-    .join(" ")
-    .split("_")
-    .join(" ");
-
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
   };
@@ -26,10 +20,10 @@ const DailyWeatherView = ({ dailyWeather, timezone, city }) => {
     <div className="daily-weather-data">
       <p className="daily-weather-tagline">
         8 Day Forecast |
-        <span className="daily-weather-data-city"> {cityFormatter}</span>
+        <span className="daily-weather-data-city"> {cityFormatter(city)}</span>
       </p>
 
-      <Accordion title={"Click To View >>"} isExpand={true}>
+      <Accordion title={"Click To View >>"} isExpand={false}>
         <div className="daily-weather-data-box">
           {dailyWeather &&
             dailyWeather.length > 0 &&
