@@ -14,6 +14,7 @@ const Main = () => {
     longitude: null,
   });
 
+  // ** TODO think about how to move the below functions into their own components
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -29,6 +30,7 @@ const Main = () => {
     }
   };
 
+  // **
   async function fetchWeatherData(lat, lon) {
     try {
       const { data } = await axios(
@@ -40,6 +42,7 @@ const Main = () => {
     }
   }
 
+  // **
   async function fetchNewWeatherData(lat, lon) {
     try {
       const { data } = await axios(
