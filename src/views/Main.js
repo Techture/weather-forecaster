@@ -18,12 +18,13 @@ const Main = () => {
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        let newCoords = {
+        let newUserCoords = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         };
-        setUserCoords({ userCoords: newCoords });
-        fetchWeatherData(newCoords.latitude, newCoords.longitude);
+        setUserCoords({ userCoords: newUserCoords });
+        console.log("User Coords >> ", newUserCoords);
+        fetchWeatherData(newUserCoords.latitude, newUserCoords.longitude);
       });
     } else {
       console.log("Geolocation not suppported");
