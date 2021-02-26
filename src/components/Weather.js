@@ -4,12 +4,10 @@ import DailyWeather from "../views/DailyWeather";
 import HourlyWeather from "../views/HourlyWeather";
 
 const Weather = ({ data }) => {
-  console.log("Weather Component Data >> ", data);
   return (
     <>
       {data ? (
         <>
-          {/* TODO pass lat/lon down from the data prop */}
           <CurrentWeather currentWeather={data.current} city={data.timezone} />
           <DailyWeather dailyWeather={data.daily} city={data.timezone} />
           <HourlyWeather hourlyWeather={data.hourly} city={data.timezone} />

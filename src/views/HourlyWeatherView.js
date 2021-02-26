@@ -9,17 +9,15 @@ const HourlyWeather = ({ hourlyWeather, timezone, city }) => {
     .join(" ")
     .split("_")
     .join(" ");
-  // round the decimal from hourlyWeather.temp
+
   const roundTemp = (tempToRound) => {
     return Math.round(tempToRound);
   };
 
-  // format time from hourlyWeather[0].dt
   const formatTime = (timeToFormat) => {
     return FormatTime(timeToFormat, timezone, "hA");
   };
 
-  // format date from hourlyWeather[0].dt
   const formatDate = (dateToFormat) => {
     return FormatTime(dateToFormat, timezone, "MM/DD");
   };
