@@ -51,7 +51,11 @@ const Main = () => {
   }
 
   useEffect(() => {
-    getCurrentLocation();
+    if (weatherData) {
+      setWeatherData(weatherData);
+    } else {
+      getCurrentLocation();
+    }
   }, []);
 
   return (
@@ -65,9 +69,10 @@ const Main = () => {
         />
 
         {weatherData ? (
-          <Weather data={weatherData} setWeatherData={setWeatherData} />
-        ) : /* <h2 className="error">Sorry, that city has no weather data.</h2> */
-        null}
+          <Weather data={weatherData} />
+        ) : (
+          <h2 className="error">Sorry, that city has no weather data.</h2>
+        )}
       </div>
       <Footer />
     </>

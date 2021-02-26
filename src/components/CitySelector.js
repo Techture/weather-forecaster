@@ -26,10 +26,7 @@ const CitySelector = ({ onSearch }) => {
       };
       setCity(newUserLocation.name);
       setUserLocation(newUserLocation);
-      console.log("New User Location >> ", newUserLocation);
-    } catch (error) {
-      console.error("Err: Updating City >> ", error);
-    }
+    } catch (error) {}
   }
 
   // set city in localStorage
