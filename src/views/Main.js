@@ -9,18 +9,38 @@ import { API_BASE_URL, API_KEY } from "../apis/config";
 
 const Main = () => {
   const [weatherData, setWeatherData] = useState(null);
+  const [userCoords, setUserCoords] = useState({
+    latitude: null,
+    longitude: null,
+  });
 
-  // TODO >> use geolocation to load weather from user's location
-  // async function fetchWeatherData(lat, lon) {
-  //   try {
-  //     const { data } = await axios(
-  //       `${API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`
-  //     );
-  //     setWeatherData(data);
-  //   } catch (error) {
-  //     console.log("ERR: Fetch Weather >>", error);
-  //   }
-  // }
+  const getCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let newCoords = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        };
+        setUserCoords({ userCoords: newCoords });
+        fetchWeatherData(newCoords.latitude, newCoords.longitude);
+        // console.log("Position >>", position);
+        // console.log("Coords >>", coords);
+      });
+    } else {
+      console.log("Geolocation not suppported");
+    }
+  };
+
+  async function fetchWeatherData(lat, lon) {
+    try {
+      const { data } = await axios(
+        `${API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`
+      );
+      setWeatherData(data);
+    } catch (error) {
+      console.log("ERR: Fetch Weather >>", error);
+    }
+  }
 
   async function fetchNewWeatherData(lat, lon) {
     try {
@@ -29,21 +49,11 @@ const Main = () => {
       );
 
       setWeatherData(data);
-    } catch (error) {
-      console.log("ERR: Fetch New Weather >>", error);
-    }
+    } catch (error) {}
   }
 
-  console.log("Weather Data on load >> ", weatherData);
-  // get weather data on initial load
   useEffect(() => {
-    //   // fetchNewWeatherData("64.128288", "-21.827774");
-    //   // fetchNewWeatherData(weatherData.data.lat, weatherData.data.lon);
-    if (weatherData) {
-      setWeatherData(weatherData);
-    }
-
-    // setWeatherData(weatherData);
+    getCurrentLocation();
   }, []);
 
   return (
