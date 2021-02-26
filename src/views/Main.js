@@ -14,21 +14,23 @@ const Main = () => {
     longitude: null,
   });
 
+  // ** TODO think about how to move the below functions into their own components
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        let newCoords = {
+        let newUserCoords = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         };
-        setUserCoords({ userCoords: newCoords });
-        fetchWeatherData(newCoords.latitude, newCoords.longitude);
+        setUserCoords({ userCoords: newUserCoords });
+        fetchWeatherData(newUserCoords.latitude, newUserCoords.longitude);
       });
     } else {
       console.log("Geolocation not suppported");
     }
   };
 
+  // **
   async function fetchWeatherData(lat, lon) {
     try {
       const { data } = await axios(
@@ -40,6 +42,7 @@ const Main = () => {
     }
   }
 
+  // **
   async function fetchNewWeatherData(lat, lon) {
     try {
       const { data } = await axios(
@@ -50,11 +53,15 @@ const Main = () => {
     } catch (error) {}
   }
 
+  // TODO >> setUserLocation here as well as in CitySelector
   useEffect(() => {
-    if (weatherData) {
-      setWeatherData(weatherData);
-    } else {
+    // setWeatherData(weatherData);
+    // getCurrentLocation();
+
+    if (!weatherData) {
       getCurrentLocation();
+    } else if (weatherData) {
+      setWeatherData(weatherData);
     }
   }, []);
 
