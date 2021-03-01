@@ -24,11 +24,13 @@ const CitySelector = ({ onSearch }) => {
         name: data[0].name,
       };
       setUserLocation(newUserLocation);
-    } catch (error) {}
+    } catch (error) {
+      console.log("Err: Updating City Name >> ", error);
+    }
   }
 
-  // set city in localStorage
   useEffect(() => {
+    // set userLocation in localStorage
     const localUserLocation = localStorage.getItem("user location");
     if (localUserLocation) {
       setUserLocation(JSON.parse(localUserLocation));

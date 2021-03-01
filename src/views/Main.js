@@ -50,19 +50,14 @@ const Main = () => {
       );
 
       setWeatherData(data);
-    } catch (error) {}
+    } catch (error) {
+      console.log("ERR: Fetch New Weather >>", error);
+    }
   }
 
   // TODO >> setUserLocation here as well as in CitySelector
   useEffect(() => {
-    // setWeatherData(weatherData);
-    // getCurrentLocation();
-
-    if (!weatherData) {
-      getCurrentLocation();
-    } else if (weatherData) {
-      setWeatherData(weatherData);
-    }
+    getCurrentLocation();
   }, []);
 
   return (
@@ -75,11 +70,13 @@ const Main = () => {
           data={weatherData}
         />
 
-        {weatherData ? (
+        <Weather data={weatherData} />
+
+        {/* {weatherData ? (
           <Weather data={weatherData} />
         ) : (
           <h2 className="error">Sorry, that city has no weather data.</h2>
-        )}
+        )} */}
       </div>
       <Footer />
     </>
