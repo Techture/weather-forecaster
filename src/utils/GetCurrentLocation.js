@@ -1,13 +1,17 @@
 import fetchWeatherData from "./FetchWeatherData";
 
-const GetCurrentLocation = () => {
+const GetCurrentLocation = (setUserLocation, setWeatherData) => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       let newUserCoords = {
         lat: position.coords.latitude,
         lon: position.coords.longitude,
       };
-      return fetchWeatherData(newUserCoords.lat, newUserCoords.lon);
+      setUserLocation({
+        lat: newUserCoords.lat,
+        lon: newUserCoords.lon,
+      });
+      fetchWeatherData(newUserCoords.lat, newUserCoords.lon, setWeatherData);
     });
   } else {
     console.log("Geolocation not suppported");

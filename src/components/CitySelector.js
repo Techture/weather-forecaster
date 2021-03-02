@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Tagline from "./Tagline";
 import updateCityName from "./UpdateCityName";
 import { FaArrowRight } from "react-icons/fa";
 import { FormControl, Button } from "react-bootstrap";
 
-const CitySelector = ({ onSearch }) => {
-  const [userLocation, setUserLocation] = useState({
-    lat: null,
-    lon: null,
-    name: "",
-  });
-
+const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
   useEffect(() => {
     const localUserLocation = localStorage.getItem("user location");
     if (localUserLocation) {
@@ -24,6 +18,7 @@ const CitySelector = ({ onSearch }) => {
 
   const onKeyDown = (event) => {
     if (event.keyCode === 13) {
+      event.preventDefault();
       updateCityName(userLocation.name, setUserLocation);
       setUserLocation(userLocation);
       onSearch(userLocation.lat, userLocation.lon);
