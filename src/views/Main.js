@@ -15,14 +15,12 @@ const Main = () => {
   const [weatherData, setWeatherData] = useState(null);
   // const [loaded, setLoaded] = useState({ loaded: false });
 
-  // useEffect(() => {
-  //   if (loaded === false) {
-  //     // getCurrentLocation(setUserLocation, setWeatherData);
-  //     setLoaded({ loaded: true });
-  //   }
-  // }, []);
-
   useEffect(() => {
+    //   if (loaded === false) {
+    //     // getCurrentLocation(setUserLocation, setWeatherData);
+    //     setLoaded({ loaded: true });
+    //   }
+
     fetchWeatherData(userLocation.lat, userLocation.lon, setWeatherData);
   }, [userLocation]);
 
