@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../views/layout/Header";
 import fetchWeatherData from "../utils/FetchWeatherData";
-import getCurrentLocation from "../utils/GetCurrentLocation";
+// import getCurrentLocation from "../utils/GetCurrentLocation";
 import CitySelector from "../components/CitySelector";
 import Weather from "../components/Weather";
 import Footer from "../views/layout/Footer";
@@ -15,25 +15,12 @@ const Main = () => {
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
-    if (!userLocation.name) {
-      getCurrentLocation(setUserLocation, setWeatherData);
-    }
+    // if (!weatherData) {
+    //   getCurrentLocation(setUserLocation, setWeatherData);
+    // }
 
     fetchWeatherData(userLocation.lat, userLocation.lon, setWeatherData);
-  }, [userLocation]);
-
-  //----------------------------------
-  useEffect(() => {
-    const localUserLocation = localStorage.getItem("user location");
-    if (localUserLocation) {
-      setUserLocation(JSON.parse(localUserLocation));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("user location", JSON.stringify(userLocation));
-  });
-  //----------------------------------
+  }, [userLocation.name]);
 
   return (
     <>
