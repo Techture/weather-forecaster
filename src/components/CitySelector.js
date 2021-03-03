@@ -16,6 +16,9 @@ const CitySelector = ({
     const geoLocationFlag = localStorage.getItem("geolocation loaded");
     if (localUserLocation) {
       setUserLocation(JSON.parse(localUserLocation));
+    }
+
+    if (localUserLocation) {
       setGeolocationLoaded(JSON.parse(geoLocationFlag));
     }
   }, []);
