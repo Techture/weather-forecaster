@@ -1,7 +1,5 @@
 # Weather Forecaster
 
-## OpenWeather Code Challenge
-
 ### What I'm using
 
 - hooks - to manage state

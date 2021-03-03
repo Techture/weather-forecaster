@@ -4,24 +4,36 @@ import updateCityName from "./UpdateCityName";
 import { FaArrowRight } from "react-icons/fa";
 import { FormControl, Button } from "react-bootstrap";
 
-const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
+const CitySelector = ({
+  onSearch,
+  userLocation,
+  setUserLocation,
+  geolocationLoaded,
+  setGeolocationLoaded,
+}) => {
   useEffect(() => {
     const localUserLocation = localStorage.getItem("user location");
+    const geoLocationFlag = localStorage.getItem("geolocation loaded");
     if (localUserLocation) {
       setUserLocation(JSON.parse(localUserLocation));
+      setGeolocationLoaded(JSON.parse(geoLocationFlag));
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("user location", JSON.stringify(userLocation));
+    localStorage.setItem(
+      "geolocation loaded",
+      JSON.stringify(geolocationLoaded)
+    );
   });
 
   const onKeyDown = (event) => {
     if (event.keyCode === 13) {
       event.preventDefault();
       updateCityName(userLocation.name, setUserLocation);
-      setUserLocation(userLocation);
       onSearch(userLocation.lat, userLocation.lon);
+      setUserLocation(userLocation);
     }
   };
 
@@ -32,7 +44,7 @@ const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
         className="weather-search-form weather-search-input"
         placeholder="Enter a city"
         onChange={(event) => setUserLocation({ name: event.target.value })}
-        value={userLocation.name}
+        value={userLocation.name || ""}
         onKeyDown={onKeyDown}
       />
       <div className="weather-search-submit">
