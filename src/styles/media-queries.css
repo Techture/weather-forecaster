@@ -1,11 +1,116 @@
-@media (min-width: 480px) {
-  /*CSS for medium width screens*/
+/* media queries */
+
+/* --iPhone 5 --- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
 }
 
-@media (min-width: 800px) {
-  /*CSS for wide screens*/
+/* Portrait*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
 }
 
-@media (min-width: 1100px) {
-  /*CSS for really wide screens*/
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+}
+
+/* --iPhone 6 -- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+}
+
+/* ---iPhone 6+ -- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+  .main {
+    width: 100%;
+  }
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+}
+
+/* ----- Galaxy S5 ------ */
+/* Portrait and Landscape */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+  .main {
+    width: 100%;
+  }
+
+  /* header title */
+  .header-title {
+    font-weight: 100;
+    color: white;
+    letter-spacing: 0.8px;
+    line-height: 0px;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
+  /* header title */
+
+  /* weather search */
+  .tagline {
+    flex: 1;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    padding-right: 0px;
+  }
+
+  .weather-search {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 1);
+    padding-top: 1.7rem;
+    padding-right: 2rem;
+  }
+  /* weather search */
+
+  /* current weather  */
+  .weather-data-property {
+    margin: 0rem 0.7rem;
+  }
+
+  .weather-data-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .weather-data-value {
+    color: var(--color-2);
+    font-size: 1.8rem;
+    line-height: 1;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* current weather  */
+}
+
+/* Portrait */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+}
+
+/* Landscape */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+}
+
+/* --- Galaxy S6--- */
+@media only screen and (min-device-width: 360px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 3) {
 }

@@ -5,6 +5,10 @@
   background-color: var(--color-4);
 }
 
+.current-weather-data-city {
+  padding-top: 1rem;
+}
+
 .current-weather-data-value {
   color: var(--text-blue);
   font-size: 3rem;
