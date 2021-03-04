@@ -8,15 +8,11 @@
 
 ### Installation
 
-Steps to get an openweather api key:
-
 1. Register at https://home.openweathermap.org/users/sign_up
-2. Get your unique API key on your personal page
-3. api key will go here >> src/apis/config.js
-
-- clone repo
-- run npm/yarn install
-- run npm/yarn start
+2. api key will go here >> src/apis/config.js
+3. clone repo
+4. run npm/yarn install
+5. run npm/yarn start
 
 ### TODO
 
