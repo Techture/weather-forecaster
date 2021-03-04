@@ -4,13 +4,12 @@
 
 - hooks - to manage state
 - OpenWeather api - you'll need to grab an api key:
+- localStorage - to persist weather data on browser refresh
 
 1. Register at https://home.openweathermap.org/users/sign_up
 2. Get your unique API key on your personal page
 
 api key will go here >> src/apis/config.js
-
-- localStorage - to persist weather data on browser refresh
 
 ### Installation
 
