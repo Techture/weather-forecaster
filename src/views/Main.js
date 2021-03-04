@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../views/layout/Header";
 import fetchWeatherData from "../utils/FetchWeatherData";
-// import getCurrentLocation from "../utils/GetCurrentLocation";
 import CitySelector from "../components/CitySelector";
 import Weather from "../components/Weather";
 import Footer from "../views/layout/Footer";
@@ -17,8 +16,6 @@ const Main = () => {
   const [geolocationLoaded, setGeolocationLoaded] = useState(false);
 
   useEffect(() => {
-    // getCurrentLocation(setUserLocation, setWeatherData);
-
     const geoLocationFlag = localStorage.getItem("geolocation loaded");
     if (geoLocationFlag) {
       setGeolocationLoaded(JSON.parse(false));

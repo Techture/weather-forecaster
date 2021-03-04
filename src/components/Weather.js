@@ -4,7 +4,6 @@ import DailyWeather from "../views/DailyWeather";
 import HourlyWeather from "../views/HourlyWeather";
 
 const Weather = ({ data, city }) => {
-  console.log("data timezone >> ", data);
   return (
     <>
       {data && (

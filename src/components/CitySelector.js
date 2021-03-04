@@ -29,16 +29,6 @@ const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
   return (
     <div className="weather-search">
       <Tagline />
-      {/* <FormControl
-        className="weather-search-form weather-search-input"
-        placeholder="Enter a zipcode"
-        zip={userLocation.zip}
-        onChange={(event) =>
-          setUserLocation({ ...userLocation, zip: event.target.value })
-        }
-        value={userLocation.zip || ""}
-        onKeyDown={onKeyDown}
-      /> */}
       <FormControl
         className="weather-search-form weather-search-input"
         placeholder="Enter a city"
