@@ -3,7 +3,13 @@
 ### What I'm using
 
 - hooks - to manage state
-- OpenWeather api - api key is provided for the review, and will be deleted when review is complete
+- OpenWeather api - you'll need to grab an api key:
+
+1. Register at https://home.openweathermap.org/users/sign_up
+2. Get your unique API key on your personal page
+
+api key will go here >> src/apis/config.js
+
 - localStorage - to persist weather data on browser refresh
 
 ### Installation
