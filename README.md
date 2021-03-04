@@ -8,7 +8,7 @@
 
 ### Installation
 
-Steps to get an openweather api key
+Steps to get an OpenWeather api key
 
 1. Register at https://home.openweathermap.org/users/sign_up
 2. Get your unique API key on your personal page
