@@ -1,13 +1,12 @@
 import React from "react";
 import DateTime from "../utils/DateTime";
-import cityFormatter from "../utils/CityFormatter";
 
 const CurrentWeather = ({ city, temp, feels_like, conditions, icon }) => {
   return (
     <div className="current-weather-data">
       <p className="current-weather-tagline">
         Current Forecast |{" "}
-        <span className="current-weather-data-city">{cityFormatter(city)}</span>
+        <span className="current-weather-data-city">{city}</span>
       </p>
       <DateTime />
       <div className="weather-data-box">

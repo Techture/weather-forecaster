@@ -29,11 +29,23 @@ const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
   return (
     <div className="weather-search">
       <Tagline />
+      {/* <FormControl
+        className="weather-search-form weather-search-input"
+        placeholder="Enter a zipcode"
+        zip={userLocation.zip}
+        onChange={(event) =>
+          setUserLocation({ ...userLocation, zip: event.target.value })
+        }
+        value={userLocation.zip || ""}
+        onKeyDown={onKeyDown}
+      /> */}
       <FormControl
         className="weather-search-form weather-search-input"
         placeholder="Enter a city"
         name={userLocation.name}
-        onChange={(event) => setUserLocation({ name: event.target.value })}
+        onChange={(event) =>
+          setUserLocation({ ...userLocation, name: event.target.value })
+        }
         value={userLocation.name || ""}
         onKeyDown={onKeyDown}
       />
@@ -43,7 +55,7 @@ const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
           onClick={(event) => {
             event.preventDefault();
             onSearch(userLocation.lat, userLocation.lon);
-            updateCityName(userLocation.name, setUserLocation);
+            updateCityName(setUserLocation);
           }}
         >
           <FaArrowRight />{" "}
