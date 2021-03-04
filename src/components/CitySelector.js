@@ -7,6 +7,7 @@ import { FormControl, Button } from "react-bootstrap";
 const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
   useEffect(() => {
     const localUserLocation = localStorage.getItem("user location");
+
     if (localUserLocation) {
       setUserLocation(JSON.parse(localUserLocation));
     }
@@ -20,8 +21,8 @@ const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
     if (event.keyCode === 13) {
       event.preventDefault();
       updateCityName(userLocation.name, setUserLocation);
-      setUserLocation(userLocation);
       onSearch(userLocation.lat, userLocation.lon);
+      setUserLocation(userLocation);
     }
   };
 
@@ -31,8 +32,9 @@ const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
       <FormControl
         className="weather-search-form weather-search-input"
         placeholder="Enter a city"
+        name={userLocation.name}
         onChange={(event) => setUserLocation({ name: event.target.value })}
-        value={userLocation.name}
+        value={userLocation.name || ""}
         onKeyDown={onKeyDown}
       />
       <div className="weather-search-submit">
