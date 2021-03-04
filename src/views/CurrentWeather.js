@@ -9,8 +9,6 @@ const CurrentWeather = ({ currentWeather, city }) => {
   const roundedTemp = Math.round(temp);
   const roundedFeelsLike = Math.round(feels_like);
 
-  console.log("weather >> ", currentWeather);
-
   return (
     <>
       {currentWeather ? (
