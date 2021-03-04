@@ -16,20 +16,8 @@ const Main = () => {
   const [geolocationLoaded, setGeolocationLoaded] = useState(false);
 
   useEffect(() => {
-    const geoLocationFlag = localStorage.getItem("geolocation loaded");
-    if (geoLocationFlag) {
-      setGeolocationLoaded(JSON.parse(false));
-    }
-
     fetchWeatherData(userLocation.lat, userLocation.lon, setWeatherData);
   }, [userLocation]);
-
-  useEffect(() => {
-    localStorage.setItem(
-      "geolocation loaded",
-      JSON.stringify(geolocationLoaded)
-    );
-  });
 
   return (
     <>
