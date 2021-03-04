@@ -1,7 +1,6 @@
 import React from "react";
 import FormatTime from "../utils/FormatTime";
 import Accordion from "../components/Accordion";
-import cityFormatter from "../utils/CityFormatter";
 
 const DailyWeatherView = ({ dailyWeather, timezone, city }) => {
   const roundTemp = (tempToRound) => {
@@ -19,8 +18,7 @@ const DailyWeatherView = ({ dailyWeather, timezone, city }) => {
   return (
     <div className="daily-weather-data">
       <p className="daily-weather-tagline">
-        8 Day Forecast |
-        <span className="daily-weather-data-city"> {cityFormatter(city)}</span>
+        8 Day Forecast |<span className="daily-weather-data-city"> {city}</span>
       </p>
 
       <Accordion title={"Click To View >>"} isExpand={false}>

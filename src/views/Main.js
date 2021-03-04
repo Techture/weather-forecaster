@@ -7,9 +7,10 @@ import Footer from "../views/layout/Footer";
 
 const Main = () => {
   const [userLocation, setUserLocation] = useState({
+    zip: null,
+    name: "",
     lat: null,
     lon: null,
-    name: "",
   });
   const [weatherData, setWeatherData] = useState(null);
   const [geolocationLoaded, setGeolocationLoaded] = useState(false);
@@ -46,7 +47,7 @@ const Main = () => {
           setGeolocationLoaded={setGeolocationLoaded}
         />
 
-        {weatherData && <Weather data={weatherData} />}
+        {weatherData && <Weather data={weatherData} city={userLocation.name} />}
       </div>
       <Footer />
     </>

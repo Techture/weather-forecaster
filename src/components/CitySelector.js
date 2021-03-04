@@ -33,7 +33,9 @@ const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
         className="weather-search-form weather-search-input"
         placeholder="Enter a city"
         name={userLocation.name}
-        onChange={(event) => setUserLocation({ name: event.target.value })}
+        onChange={(event) =>
+          setUserLocation({ ...userLocation, name: event.target.value })
+        }
         value={userLocation.name || ""}
         onKeyDown={onKeyDown}
       />
@@ -43,7 +45,7 @@ const CitySelector = ({ onSearch, userLocation, setUserLocation }) => {
           onClick={(event) => {
             event.preventDefault();
             onSearch(userLocation.lat, userLocation.lon);
-            updateCityName(userLocation.name, setUserLocation);
+            updateCityName(setUserLocation);
           }}
         >
           <FaArrowRight />{" "}
