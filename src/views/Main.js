@@ -22,15 +22,15 @@ const Main = () => {
       setGeolocationLoaded(JSON.parse(false));
     }
 
-    getCurrentLocation(setUserLocation, setWeatherData);
+    // getCurrentLocation(setUserLocation, setWeatherData);
     // if (userLocation.lat === null && userLocation.lon === null) {
     //   getCurrentLocation(setUserLocation, setWeatherData);
     // } else if (!userLocation.lat === null && !userLocation.lon === null) {
     //   return;
     // }
 
-    // fetchWeatherData(userLocation.lat, userLocation.lon, setWeatherData);
-  }, []);
+    fetchWeatherData(userLocation.lat, userLocation.lon, setWeatherData);
+  }, [userLocation]);
 
   useEffect(() => {
     localStorage.setItem(

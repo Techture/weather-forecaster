@@ -16,44 +16,12 @@
 /* --iPhone 6 -- */
 /* Portrait and Landscape */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
-}
-
-/* Portrait */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-}
-
-/* ---iPhone 6+ -- */
-/* Portrait and Landscape */
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
-  .main {
-    width: 100%;
-  }
-}
-
-/* Portrait */
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-}
-
-/* ----- Galaxy S5 ------ */
-/* Portrait and Landscape */
-@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
   .main {
     width: 100%;
   }
 
   /* header title */
   .header-title {
-    font-weight: 100;
-    color: white;
-    letter-spacing: 0.8px;
     line-height: 0px;
     font-size: 2rem;
     letter-spacing: 0.1rem;
@@ -62,6 +30,7 @@
 
   /* weather search */
   .tagline {
+    line-height: 2rem;
     flex: 1;
     font-size: 1.5rem;
     text-align: center;
@@ -94,7 +63,156 @@
 
   .weather-data-value {
     color: var(--color-2);
-    font-size: 1.8rem;
+    font-size: 1.7rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .current-weather-data-value {
+    color: var(--text-blue);
+    font-size: 3.5rem;
+    padding: 0rem;
+    line-height: 1;
+    padding: 0.5rem;
+  }
+
+  /* current weather  */
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+}
+
+/* ---iPhone 6+ -- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+  .main {
+    width: 100%;
+  }
+
+  /* header title */
+  .header-title {
+    line-height: 0px;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
+  /* header title */
+
+  /* weather search */
+  .tagline {
+    line-height: 2rem;
+    flex: 1;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    padding-right: 0px;
+  }
+
+  .weather-search {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 1);
+    padding-top: 1.7rem;
+    padding-right: 2rem;
+  }
+  /* weather search */
+
+  /* current weather  */
+  .weather-data-property {
+    margin: 0rem 0.7rem;
+  }
+
+  .weather-data-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .weather-data-value {
+    color: var(--color-2);
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .current-weather-data-value {
+    color: var(--text-blue);
+    font-size: 3.5rem;
+    padding: 0rem;
+    line-height: 1;
+
+    padding: 0.5rem;
+  }
+
+  /* current weather  */
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+}
+
+/* ----- Galaxy S5 ------ */
+/* Portrait and Landscape */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+  .main {
+    width: 100%;
+  }
+
+  /* header title */
+  .header-title {
+    line-height: 0px;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
+  /* header title */
+
+  /* weather search */
+  .tagline {
+    line-height: 2rem;
+    flex: 1;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    padding-right: 0px;
+  }
+
+  .weather-search {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 1);
+    padding-top: 1.7rem;
+    padding-right: 2rem;
+  }
+  /* weather search */
+
+  /* current weather  */
+  .weather-data-property {
+    margin: 0rem 0.7rem;
+  }
+
+  .weather-data-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .weather-data-value {
+    color: var(--color-2);
+    font-size: 1.6rem;
     line-height: 1;
     padding: 0.5rem;
     margin-bottom: 1rem;
@@ -111,6 +229,176 @@
 @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
 }
 
-/* --- Galaxy S6--- */
+/* --- Galaxy S6 --- */
 @media only screen and (min-device-width: 360px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 3) {
+  .main {
+    width: 100%;
+  }
+
+  /* header title */
+  .header-title {
+    line-height: 0px;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
+  /* header title */
+
+  /* weather search */
+  .tagline {
+    line-height: 2rem;
+    flex: 1;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    padding-right: 0px;
+  }
+
+  .weather-search {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 1);
+    padding-top: 1.7rem;
+    padding-right: 2rem;
+  }
+  /* weather search */
+
+  /* current weather  */
+  .weather-data-property {
+    margin: 0rem 0.7rem;
+  }
+
+  .weather-data-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .weather-data-value {
+    color: var(--color-2);
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* current weather  */
+}
+
+/* Galaxy S7 */
+@media only screen and (min-device-width: 360px) and (max-device-width: 640px) {
+  .main {
+    width: 100%;
+  }
+
+  /* header title */
+  .header-title {
+    line-height: 0px;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
+  /* header title */
+
+  /* weather search */
+  .tagline {
+    line-height: 2rem;
+    flex: 1;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    padding-right: 0px;
+  }
+
+  .weather-search {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 1);
+    padding-top: 1.7rem;
+    padding-right: 2rem;
+  }
+  /* weather search */
+
+  /* current weather  */
+  .weather-data-property {
+    margin: 0rem 0.7rem;
+  }
+
+  .weather-data-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .weather-data-value {
+    color: var(--color-2);
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* current weather  */
+}
+
+/* Galaxy S10 */
+@media only screen and (min-device-width: 360px) and (max-device-width: 740px) {
+  .main {
+    width: 100%;
+  }
+
+  /* header title */
+  .header-title {
+    line-height: 0px;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
+  /* header title */
+
+  /* weather search */
+  .tagline {
+    line-height: 2rem;
+    flex: 1;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    padding-right: 0px;
+  }
+
+  .weather-search {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 1);
+    padding-top: 1.7rem;
+    padding-right: 2rem;
+  }
+  /* weather search */
+
+  /* current weather  */
+  .weather-data-property {
+    margin: 0rem 0.7rem;
+  }
+
+  .weather-data-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .weather-data-value {
+    color: var(--color-2);
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* current weather  */
 }
