@@ -1,6 +1,6 @@
 {
+  "homepage": "https://techture.github.io/weather-forecaster",
   "name": "weather-forecaster",
-  "homepage": "https://github.com/Techture/weather-forecaster/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
