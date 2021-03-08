@@ -1,6 +1,6 @@
 {
   "name": "weather-forecaster",
-  "homepage": "https://github.com/Techture/weather-forecaster/tree/bf-demo-link",
+  "homepage": "https://github.com/Techture/weather-forecaster/bf-demo-link",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
