@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Techture/weather-forecaster/static/css/main.2c05eb4e.chunk.css",
+    "main.js": "/Techture/weather-forecaster/static/js/main.58713035.chunk.js",
+    "main.js.map": "/Techture/weather-forecaster/static/js/main.58713035.chunk.js.map",
+    "runtime-main.js": "/Techture/weather-forecaster/static/js/runtime-main.42529762.js",
+    "runtime-main.js.map": "/Techture/weather-forecaster/static/js/runtime-main.42529762.js.map",
+    "static/js/2.b1a7acb3.chunk.js": "/Techture/weather-forecaster/static/js/2.b1a7acb3.chunk.js",
+    "static/js/2.b1a7acb3.chunk.js.map": "/Techture/weather-forecaster/static/js/2.b1a7acb3.chunk.js.map",
+    "index.html": "/Techture/weather-forecaster/index.html",
+    "precache-manifest.247da52e8b177dbc834e2b888a75608c.js": "/Techture/weather-forecaster/precache-manifest.247da52e8b177dbc834e2b888a75608c.js",
+    "service-worker.js": "/Techture/weather-forecaster/service-worker.js",
+    "static/css/main.2c05eb4e.chunk.css.map": "/Techture/weather-forecaster/static/css/main.2c05eb4e.chunk.css.map",
+    "static/js/2.b1a7acb3.chunk.js.LICENSE.txt": "/Techture/weather-forecaster/static/js/2.b1a7acb3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.42529762.js",
+    "static/js/2.b1a7acb3.chunk.js",
+    "static/css/main.2c05eb4e.chunk.css",
+    "static/js/main.58713035.chunk.js"
+  ]
+}
