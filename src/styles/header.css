@@ -7,8 +7,18 @@
 }
 
 .header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 300;
   color: white;
   letter-spacing: 0.8px;
   line-height: 35px;
+}
+
+.weather-title-icon {
+  display: flex;
+  height: 45px;
+  width: 49px;
+  margin-top: 0rem;
 }
