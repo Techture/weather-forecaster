@@ -13,7 +13,6 @@ export const UpdateCityName = async (cityName, setUserLocation) => {
       name: data[0].name,
     };
 
-    console.log("new user location >>", newUserLocation);
     setUserLocation(newUserLocation);
   } catch (error) {
     console.log("Error: Updating City Name >> ", error);
