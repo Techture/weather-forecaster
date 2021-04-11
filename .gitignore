@@ -1,3 +1,5 @@
+secret.js
+
 # dependencies
 /node_modules
 /.pnp
@@ -10,7 +12,6 @@
 /build
 
 # misc
-secret.js
 .DS_Store
 .env.local
 .env.development.local
