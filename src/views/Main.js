@@ -8,9 +8,9 @@ import Footer from "../views/layout/Footer";
 const Main = () => {
   const [userLocation, setUserLocation] = useState({
     zip: null,
-    name: "",
-    lat: null,
-    lon: null,
+    name: "New York",
+    lat: 40.71427,
+    lon: -74.00597,
   });
   const [weatherData, setWeatherData] = useState(null);
   const [geolocationLoaded, setGeolocationLoaded] = useState(false);
