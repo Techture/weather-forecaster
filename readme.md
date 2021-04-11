@@ -17,3 +17,7 @@
 ### TODO
 
 - add geolocation api - to get user location and display their weather data on start of app
+
+### View the app
+
+https://weather-forecaster-v1.netlify.app/
