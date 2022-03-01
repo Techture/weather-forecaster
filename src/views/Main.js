@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Header from "../views/layout/Header";
-import fetchWeatherData from "../utils/FetchWeatherData";
-import CitySelector from "../components/CitySelector";
-import Weather from "../components/Weather";
-import Footer from "../views/layout/Footer";
+import React, { useState, useEffect } from 'react';
+import Header from '../views/layout/Header';
+import fetchWeatherData from '../utils/FetchWeatherData';
+import CitySelector from '../components/CitySelector';
+import Weather from '../components/Weather';
+import Footer from '../views/layout/Footer';
 
 const Main = () => {
   const [userLocation, setUserLocation] = useState({
     zip: null,
-    name: "New York",
+    name: 'New York',
     lat: 40.71427,
     lon: -74.00597,
   });
@@ -21,14 +21,14 @@ const Main = () => {
 
   useEffect(() => {
     localStorage.setItem(
-      "geolocation loaded",
+      'geolocation loaded',
       JSON.stringify(geolocationLoaded)
     );
   });
 
   return (
     <>
-      <div className="main">
+      <div className='main'>
         <Header />
 
         <CitySelector
