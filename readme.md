@@ -12,22 +12,18 @@ Weather Forecaster is an application that provides current, hourly, and daily we
 ### Installation
 To set up the Weather Forecaster app locally, follow these steps:
 
-1. Obtain an API Key - Sign up at OpenWeatherMap to get your API key.
+1. Obtain an API Key - Sign up at [OpenWeatherMap](https://openweathermap.org/api) to get your API key.
 2. Clone the repo to your local machine using
-
 ```
 git clone <repository-url>
 ```
 
 Configure API Key:
-Navigate to src/apis/config.js and insert your API key:
-javascript
-Copy code
+Navigate to `src/apis/config.js` and insert your API key:
+```
 const API_KEY = 'your_api_key_here';
-export default API_KEY;
+```
 Install Dependencies:
-
-Install the necessary packages using npm or yarn:
 ```
 npm install
 # or
