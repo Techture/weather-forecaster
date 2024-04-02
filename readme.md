@@ -1,7 +1,8 @@
 ## Weather Forecaster
-[View the app](https://weather-forecaster-v1.netlify.app/)
 
 Weather Forecaster is an application that provides current, hourly, and daily weather data to users. It's built with a focus on user experience and data persistence.
+
+[View the app](https://weather-forecaster-v1.netlify.app/)
 
 ### What I'm Using
 1. Hooks: Utilized to manage state within the application, ensuring a responsive and interactive user experience.
