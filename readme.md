@@ -1,23 +1,47 @@
-# Weather Forecaster
+## Weather Forecaster
+[View the app](https://weather-forecaster-v1.netlify.app/)
 
-### What I'm using
+Weather Forecaster is an application that provides current, hourly, and daily weather data to users. It's built with a focus on user experience and data persistence.
 
-- hooks - to manage state
-- localStorage - to persist weather data on browser refresh
-- OpenWeather api - use the onecall api to get current, hourly, and daily weather data
+### What I'm Using
+1. Hooks: Utilized to manage state within the application, ensuring a responsive and interactive user experience.
+2. localStorage: Employs the browser's localStorage to persist weather data, maintaining user data across browser refreshes.
+3. OpenWeather API: Integrates the OpenWeather One Call API to fetch comprehensive weather data.
 
 ### Installation
+To set up the Weather Forecaster app locally, follow these steps:
 
-1. get an api key at https://home.openweathermap.org/users/sign_up
-2. clone repo
-3. api key will go here >> src/apis/config.js
-4. run npm/yarn install
-5. run npm/yarn start
+1. Obtain an API Key - Sign up at OpenWeatherMap to get your API key.
+2. Clone the repo to your local machine using
 
-### TODO
+```
+git clone <repository-url>
+```
 
-- add geolocation api - to get user location and display their weather data on start of app
+Configure API Key:
+Navigate to src/apis/config.js and insert your API key:
+javascript
+Copy code
+const API_KEY = 'your_api_key_here';
+export default API_KEY;
+Install Dependencies:
 
-### View the app
+Install the necessary packages using npm or yarn:
+```
+npm install
+# or
+yarn install
+```
 
-https://weather-forecaster-v1.netlify.app/
+Start the Application:
+
+```
+npm start
+# or
+yarn start
+```
+Visit http://localhost:3000 in your browser to view the app.
+
+
+
+
